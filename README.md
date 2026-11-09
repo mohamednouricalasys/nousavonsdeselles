@@ -2,7 +2,9 @@
 
 Page d'accueil statique (HTML/CSS/JS, sans framework) de l'association **Nous Avons Des Elles**, qui présente ses deux projets : **Station-Cœur** et **Les Précieuses**.
 
-Elle est faite pour devenir la **page d'accueil d'un site WordPress existant** (`https://www.nousavonsdeselles.fr`). Le reste du site (pages `/station-coeur/`, `/les-precieuses/`, mentions légales, etc.) reste géré par WordPress.
+Elle est faite pour devenir la **page d'accueil du site WordPress existant** (`https://www.nousavonsdeselles.fr`), hébergé chez **OVHcloud** (hébergement web mutualisé). Le reste du site (pages `/station-coeur/`, `/les-precieuses/`, mentions légales, etc.) reste géré par WordPress.
+
+Le déploiement décrit ici se fait **entièrement depuis l'espace client OVH**, dans un navigateur : pas de logiciel FTP, pas de SSH, pas de ligne de commande.
 
 ---
 
@@ -11,10 +13,7 @@ Elle est faite pour devenir la **page d'accueil d'un site WordPress existant** (
 1. [Contenu du projet](#1-contenu-du-projet)
 2. [Prérequis](#2-prérequis)
 3. [Travailler en local](#3-travailler-en-local)
-4. [Intégration dans un site WordPress existant](#4-intégration-dans-un-site-wordpress-existant)
-   - [Méthode A — Fichiers statiques à la racine (recommandée)](#méthode-a--fichiers-statiques-à-la-racine-recommandée)
-   - [Méthode B — Modèle de page dans un thème enfant](#méthode-b--modèle-de-page-dans-un-thème-enfant)
-   - [Méthode C — Bloc « HTML personnalisé » (dépannage)](#méthode-c--bloc--html-personnalisé--dépannage)
+4. [Déploiement via l'espace client OVH](#4-déploiement-via-lespace-client-ovh)
 5. [Favicons](#5-favicons)
 6. [SEO : robots.txt et sitemap.xml](#6-seo--robotstxt-et-sitemapxml)
 7. [Mettre à jour la landing page](#7-mettre-à-jour-la-landing-page)
@@ -27,8 +26,8 @@ Elle est faite pour devenir la **page d'accueil d'un site WordPress existant** (
 ## 1. Contenu du projet
 
 ```
-landing/
-├── public/                  ← LE LIVRABLE : tout ce qui part sur le serveur
+nousavonsdeselles/
+├── public/                  ← LE LIVRABLE : tout ce qui part sur l'hébergement OVH
 │   ├── index.html           ← la landing page (CSS externe, JS intégré)
 │   ├── styles.css
 │   ├── images/
@@ -47,16 +46,16 @@ landing/
 └── package.json
 ```
 
-> **Bon à savoir :** `index.html` utilise uniquement des **chemins relatifs** (`styles.css`, `images/...`, `favicon.svg`). Les fichiers doivent donc garder la même arborescence que dans `public/` une fois sur le serveur.
+> **Bon à savoir :** `index.html` utilise uniquement des **chemins relatifs** (`styles.css`, `images/...`, `favicon.svg`). Les fichiers doivent donc garder la même arborescence que dans `public/` une fois sur l'hébergement.
 
 ## 2. Prérequis
 
 | Pour… | Il faut |
 |---|---|
 | Modifier et prévisualiser la page | [Node.js](https://nodejs.org/) 18 ou plus récent |
-| Déployer | Un accès **FTP/SFTP** ou au **gestionnaire de fichiers** de l'hébergeur (cPanel, Plesk, o2switch, OVH, Hostinger…) |
-| Méthode B | Un accès administrateur WordPress et un **thème enfant** |
-| Dans tous les cas | Une **sauvegarde complète** du site (fichiers + base de données) avant toute modification |
+| Déployer | Un accès à l'**espace client OVHcloud** ([www.ovh.com/manager](https://www.ovh.com/manager/)) avec les droits sur l'hébergement web du site |
+| Se connecter à l'Explorateur FTP | L'**identifiant FTP** de l'hébergement et son **mot de passe** (il peut être réinitialisé depuis l'espace client, voir étape 2) |
+| Dans tous les cas | Une **sauvegarde** du site avant toute modification (voir étape 1) |
 
 ## 3. Travailler en local
 
@@ -78,32 +77,65 @@ Scripts disponibles :
 
 ---
 
-## 4. Intégration dans un site WordPress existant
+## 4. Déploiement via l'espace client OVH
 
-Trois méthodes, de la plus fiable à la moins fiable. **Choisissez-en une seule.**
+**Principe :** on dépose les fichiers de la landing page à côté de WordPress, dans le dossier racine du site, puis on ajoute une ligne au fichier `.htaccess` pour que le serveur serve `index.html` en priorité sur l'URL `/`. Toutes les autres URL (`/station-coeur/`, `/wp-admin/`, etc.) continuent d'être traitées par WordPress.
 
-| | A. Fichiers statiques | B. Modèle de page | C. Bloc HTML |
-|---|---|---|---|
-| Fidélité au design | ✅ Parfaite | ✅ Parfaite | ⚠️ Conflits avec le thème |
-| Performance | ✅ Maximale (pas de PHP) | 🟡 Bonne | 🟡 Variable |
-| Modifiable depuis l'admin WP | ❌ | ❌ (fichiers du thème) | ✅ |
-| Survit à un changement de thème | ✅ | ❌ | 🟡 |
-| Niveau technique | FTP + `.htaccess` | FTP + un peu de PHP | Aucun |
+Les hébergements mutualisés OVH utilisent Apache : le `.htaccess` est pris en compte immédiatement, sans redémarrage.
 
-### Méthode A — Fichiers statiques à la racine (recommandée)
+### Étape 0 — Repérer le dossier racine du site
 
-**Principe :** on dépose la landing page à côté de WordPress et on indique au serveur de servir `index.html` en priorité pour l'URL `/`. Toutes les autres URL (`/station-coeur/`, `/wp-admin/`, etc.) continuent d'être traitées par WordPress.
+1. Connectez-vous à l'[espace client OVHcloud](https://www.ovh.com/manager/).
+2. **Web Cloud** → **Hébergements** → sélectionnez l'hébergement du site.
+3. Onglet **Multisite** : sur la ligne `www.nousavonsdeselles.fr`, notez la colonne **Dossier racine** (en général `www`).
 
-#### Étape 1 — Sauvegarder
+C'est ce dossier qui contient déjà `wp-config.php`, `index.php`, `wp-admin/`, `wp-content/`… Dans la suite, il est appelé « dossier racine ».
 
-Téléchargez une copie du fichier `.htaccess` présent à la racine du site (même dossier que `wp-config.php`). C'est votre filet de sécurité.
+### Étape 1 — Sauvegarder
 
-#### Étape 2 — Téléverser les fichiers
+L'hébergement OVH conserve des sauvegardes automatiques, mais faites quand même une copie juste avant l'intervention :
 
-Avec FileZilla (ou le gestionnaire de fichiers de l'hébergeur), copiez **le contenu** de `public/` à la racine WordPress :
+- **Base de données :** onglet **Bases de données** → bouton `…` sur la base de WordPress → **Créer une sauvegarde** (à faire par précaution, même si la landing ne touche pas à la base).
+- **`.htaccess` :** une fois dans l'Explorateur FTP (étape 2), ouvrez le `.htaccess` du dossier racine et copiez son contenu dans un fichier texte sur votre ordinateur. C'est votre filet de sécurité.
+
+> En dernier recours, l'onglet **FTP-SSH** → **Restaurer une sauvegarde** permet de remettre tous les fichiers de l'hébergement dans l'état d'un jour précédent.
+
+### Étape 2 — Ouvrir l'Explorateur FTP
+
+1. Onglet **FTP-SSH** de l'hébergement.
+2. Si vous ne connaissez pas le mot de passe FTP : dans le tableau des utilisateurs, bouton `…` sur l'utilisateur principal → **Modifier le mot de passe**. La prise en compte prend quelques minutes.
+3. Cliquez sur **Explorateur FTP**. Un nouvel onglet s'ouvre : le serveur est déjà rempli, saisissez l'**identifiant FTP** (affiché dans l'onglet FTP-SSH) et le mot de passe, puis connectez-vous.
+4. Entrez dans le dossier racine noté à l'étape 0 (par exemple `www`).
+
+### Étape 3 — Vérifier qu'il n'y a pas de conflit de noms
+
+Dans le dossier racine, vérifiez qu'il n'existe **pas déjà** :
+
+- un dossier `images/` ;
+- un fichier `styles.css` ;
+- un fichier `index.html`.
+
+Si l'un d'eux existe, **ne l'écrasez pas** : renommez l'élément côté landing (et mettez à jour les chemins dans `index.html`) avant de continuer.
+
+### Étape 4 — Préparer une archive ZIP
+
+Sur votre ordinateur, ouvrez le dossier `public/` du projet, puis :
+
+1. Sélectionnez **son contenu** (`index.html`, `styles.css`, `images/`, les favicons, `site.webmanifest`…), **pas** le dossier `public/` lui-même.
+2. **Ne sélectionnez pas** `robots.txt` ni `sitemap.xml` si une extension SEO est installée sur WordPress (voir [section 6](#6-seo--robotstxt-et-sitemapxml)).
+3. Clic droit → **Compresser dans un fichier ZIP** (Windows 11) ou **Envoyer vers → Dossier compressé**. Nommez-le par exemple `landing.zip`.
+
+> Si vous zippez le dossier `public/` au lieu de son contenu, les fichiers se retrouveront dans `www/public/` et la page ne s'affichera pas sur `/`.
+
+### Étape 5 — Téléverser et décompresser
+
+1. Dans l'Explorateur FTP, assurez-vous d'être **dans le dossier racine** (`www`).
+2. Cliquez sur **Upload** (Envoyer).
+3. Dans la zone **Archives** (et non *Fichiers*), sélectionnez `landing.zip`, puis validez : l'archive est envoyée **et décompressée automatiquement** dans le dossier courant.
+4. Revenez à la liste : `index.html`, `styles.css`, `images/`, les favicons, etc. doivent apparaître **à côté** de `index.php` et `wp-config.php`.
 
 ```
-public_html/                 ← racine WordPress (contient déjà wp-config.php)
+www/                         ← dossier racine (contient déjà wp-config.php)
 ├── index.php                ← WordPress (NE PAS supprimer)
 ├── index.html               ← nouveau
 ├── styles.css               ← nouveau
@@ -114,20 +146,21 @@ public_html/                 ← racine WordPress (contient déjà wp-config.php
 └── .htaccess
 ```
 
-> ⚠️ **Ne téléversez pas `robots.txt` ni `sitemap.xml`** si une extension SEO (Yoast, Rank Math, SEOPress…) est installée : voir [section 6](#6-seo--robotstxt-et-sitemapxml).
->
-> ⚠️ Vérifiez qu'il n'existe pas déjà un dossier `images/` ou un fichier `styles.css` à la racine. Si c'est le cas, renommez-les côté landing (et mettez à jour les chemins dans `index.html`) plutôt que d'écraser l'existant.
+> Si la décompression échoue, téléversez les fichiers via la zone **Fichiers** : d'abord les fichiers à plat, puis créez le dossier `images/` (bouton **New dir**) et ses sous-dossiers, et envoyez les images dans chacun d'eux.
 
-#### Étape 3 — Donner la priorité à `index.html`
+### Étape 6 — Donner la priorité à `index.html` dans le `.htaccess`
 
-**Serveur Apache / LiteSpeed** (le cas de la plupart des hébergements mutualisés) — ajoutez cette ligne **tout en haut** du `.htaccess`, **au-dessus** du bloc `# BEGIN WordPress` :
+1. Dans le dossier racine, cochez le fichier `.htaccess` puis cliquez sur **Edit** (Modifier).
+2. Ajoutez ces deux lignes **tout en haut**, **au-dessus** du bloc `# BEGIN WordPress` :
 
-```apache
-# Landing page statique servie sur la page d'accueil
-DirectoryIndex index.html index.php
-```
+   ```apache
+   # Landing page statique servie sur la page d'accueil
+   DirectoryIndex index.html index.php
+   ```
 
-Le fichier doit ressembler à ceci :
+3. Enregistrez (**Save**).
+
+Le fichier doit ressembler à ceci (le bloc WordPress peut légèrement différer, c'est normal) :
 
 ```apache
 # Landing page statique servie sur la page d'accueil
@@ -147,128 +180,30 @@ RewriteRule . /index.php [L]
 ```
 
 > Ne modifiez jamais l'intérieur du bloc `# BEGIN WordPress … # END WordPress` : WordPress le réécrit lorsque vous enregistrez les permaliens.
+>
+> Si une autre ligne `DirectoryIndex` existe déjà dans le fichier, remplacez-la par celle-ci au lieu d'en ajouter une seconde.
 
-**Serveur Nginx** — dans le bloc `server` (ou demandez à votre hébergeur) :
+### Étape 7 — Vider les caches
 
-```nginx
-index index.html index.php;
-
-location = / {
-    try_files /index.html /index.php?$args;
-}
-
-location / {
-    try_files $uri $uri/ /index.php?$args;
-}
-```
-
-Puis rechargez Nginx (`sudo nginx -t && sudo systemctl reload nginx`).
-
-#### Étape 4 — Accès à l'accueil WordPress
-
-La page d'accueil WordPress d'origine reste accessible via `https://www.nousavonsdeselles.fr/index.php`. Pour éviter tout contenu dupliqué, vous pouvez dans **Réglages → Lecture** choisir une page statique simple comme page d'accueil, ou la passer en `noindex` via votre extension SEO.
-
-#### Étape 5 — Vider les caches
-
-- Extension de cache (WP Rocket, LiteSpeed Cache, W3 Total Cache, WP Super Cache…) : **Vider tout le cache**.
-- CDN (Cloudflare…) : **Purge Everything**.
-- Navigateur : `Ctrl + F5` (ou fenêtre de navigation privée).
+- **CDN OVH** (si l'option est active) : onglet **Multisite** → bouton `…` sur la ligne du domaine → **Vider le cache**.
+- **Extension de cache WordPress** (WP Rocket, LiteSpeed Cache, W3 Total Cache, WP Super Cache…) : depuis `/wp-admin/`, **Vider tout le cache**.
+- **Navigateur :** `Ctrl + F5`, ou testez en fenêtre de navigation privée.
 
 ✅ Ouvrez `https://www.nousavonsdeselles.fr/` : la landing page doit s'afficher, et les liens « Station-Cœur » / « Les Précieuses » doivent mener aux pages WordPress.
 
----
+### Étape 8 — Ancienne page d'accueil WordPress
 
-### Méthode B — Modèle de page dans un thème enfant
-
-**Principe :** la landing page devient un modèle de page du thème. Elle est choisie comme page d'accueil dans **Réglages → Lecture**. Utile si l'hébergeur interdit la modification du `.htaccess`, ou si vous voulez profiter des extensions WordPress (statistiques, cookies…) sur la page.
-
-> Un **thème enfant** est indispensable : sans lui, la prochaine mise à jour du thème effacerait vos fichiers.
-
-#### Étape 1 — Copier les fichiers dans le thème enfant
-
-```
-wp-content/themes/<votre-theme-enfant>/
-├── page-landing.php         ← à créer (voir ci-dessous)
-└── landing/
-    ├── styles.css           ← copie de public/styles.css
-    └── images/              ← copie de public/images/
-```
-
-#### Étape 2 — Créer `page-landing.php`
-
-1. Copiez `public/index.html` dans `page-landing.php`.
-2. Ajoutez cet en-tête **tout en haut** du fichier, avant `<!DOCTYPE html>` :
-
-   ```php
-   <?php
-   /**
-    * Template Name: Landing — Nous Avons Des Elles
-    */
-   $landing = get_stylesheet_directory_uri() . '/landing';
-   ?>
-   ```
-
-3. Remplacez les chemins relatifs par des chemins absolus :
-
-   | Dans `index.html` | Devient dans `page-landing.php` |
-   |---|---|
-   | `href="styles.css"` | `href="<?php echo esc_url( $landing ); ?>/styles.css"` |
-   | `src="images/…"` / `srcset="images/…"` / `href="images/…"` | `…="<?php echo esc_url( $landing ); ?>/images/…"` |
-
-   Astuce : dans VS Code, rechercher/remplacer `"images/` par `"<?php echo esc_url( $landing ); ?>/images/` (attention aux `srcset` qui contiennent plusieurs images séparées par des virgules : chaque chemin doit être préfixé).
-
-4. **Favicons :** supprimez le bloc `<!-- Favicon Package -->` du modèle et utilisez l'icône du site WordPress (voir [section 5](#5-favicons)).
-
-5. **Optionnel — extensions WordPress :** pour que les extensions (Google Analytics, bandeau cookies, Matomo…) fonctionnent sur la page, ajoutez :
-   - `<?php wp_head(); ?>` juste avant `</head>` ;
-   - `<?php wp_footer(); ?>` juste avant `</body>`.
-
-   ⚠️ Cela charge aussi le CSS du thème, qui peut entrer en conflit avec la landing. Si l'affichage se dégrade, retirez le CSS du thème uniquement sur cette page dans le `functions.php` du thème enfant :
-
-   ```php
-   add_action( 'wp_enqueue_scripts', function () {
-       if ( is_page_template( 'page-landing.php' ) ) {
-           // Remplacez par les identifiants (handles) des feuilles de style de votre thème
-           wp_dequeue_style( 'parent-style' );
-           wp_dequeue_style( 'child-style' );
-           wp_dequeue_style( 'wp-block-library' );
-           wp_dequeue_style( 'global-styles' );
-       }
-   }, 100 );
-   ```
-
-#### Étape 3 — Créer la page et la définir comme accueil
-
-1. **Pages → Ajouter** : titre « Accueil », contenu vide.
-2. Dans le panneau de droite, **Modèle** → *Landing — Nous Avons Des Elles*. Publiez.
-3. **Réglages → Lecture** → *La page d'accueil affiche* : **Une page statique** → *Page d'accueil* : **Accueil**. Enregistrez.
-4. Videz les caches (voir méthode A, étape 5).
-
----
-
-### Méthode C — Bloc « HTML personnalisé » (dépannage)
-
-À n'utiliser que si vous n'avez **aucun accès aux fichiers** du serveur. Le rendu ne sera pas identique, car le thème ajoute son en-tête, son pied de page et ses styles.
-
-1. Téléversez les images de `public/images/` dans la **Médiathèque** et notez leurs URL.
-2. Créez une page avec un modèle « pleine largeur / sans titre » (selon le thème).
-3. Ajoutez un bloc **HTML personnalisé** et collez le contenu situé **entre `<body>` et `</body>`** de `index.html`, en retirant le `<header>` et le `<footer>` si le thème affiche déjà les siens.
-4. Remplacez chaque `images/…` par l'URL de la Médiathèque correspondante.
-5. Collez le contenu de `styles.css` dans **Apparence → Personnaliser → CSS additionnel** (ou **Éditeur du site → Styles → CSS additionnel** sur un thème bloc).
-6. Le `<script>` en bas de page est souvent supprimé par WordPress : ajoutez-le via une extension du type *WPCode* (emplacement « Pied de page », uniquement sur cette page).
-7. Définissez la page comme page d'accueil (**Réglages → Lecture**).
+La page d'accueil WordPress d'origine reste accessible via `https://www.nousavonsdeselles.fr/index.php`. Pour éviter tout contenu dupliqué, vous pouvez dans **Réglages → Lecture** de WordPress choisir une page statique simple comme page d'accueil, ou la passer en `noindex` via votre extension SEO.
 
 ---
 
 ## 5. Favicons
 
-Le dossier [`wordpress-favicons/`](wordpress-favicons/) contient un kit complet. Le plus simple :
+Les favicons de `public/` sont déposés à la racine avec la landing et référencés par `index.html`. Pour que les **autres pages WordPress** affichent la même icône :
 
-1. **Apparence → Personnaliser → Identité du site** (ou **Réglages → Général** sur les thèmes bloc).
+1. Dans WordPress : **Apparence → Personnaliser → Identité du site** (ou **Réglages → Général** sur les thèmes bloc).
 2. **Icône du site** → téléversez `wordpress-favicons/icon-512.png`.
 3. WordPress génère les autres tailles automatiquement.
-
-Avec la **méthode A**, les favicons de `public/` sont déjà à la racine et référencés par `index.html` : l'icône WordPress servira pour les autres pages. Utilisez la même image partout pour rester cohérent.
 
 Détails et alternatives : [wordpress-favicons/README.md](wordpress-favicons/README.md).
 
@@ -278,7 +213,7 @@ Un fichier physique `robots.txt` ou `sitemap.xml` à la racine **prend le pas** 
 
 | Situation | Que faire |
 |---|---|
-| Une extension SEO est installée (Yoast, Rank Math, SEOPress, AIOSEO…) | **Ne téléversez pas** `robots.txt` ni `sitemap.xml`. Laissez l'extension les générer ; ses sitemaps (`/sitemap_index.xml`, `/wp-sitemap.xml`…) incluent déjà la page d'accueil. |
+| Une extension SEO est installée (Yoast, Rank Math, SEOPress, AIOSEO…) | **Ne téléversez pas** `robots.txt` ni `sitemap.xml` (excluez-les de l'archive ZIP). Laissez l'extension les générer ; ses sitemaps (`/sitemap_index.xml`, `/wp-sitemap.xml`…) incluent déjà la page d'accueil. |
 | Aucune extension SEO | Vous pouvez utiliser ceux de `public/`, **après** avoir mis à jour les dates `<lastmod>` et vérifié que toutes les URL listées existent. |
 
 Pensez ensuite à déclarer le sitemap dans [Google Search Console](https://search.google.com/search-console).
@@ -291,8 +226,10 @@ Les balises `canonical`, Open Graph et Twitter de `index.html` pointent vers `ht
 2. Nouvelles photos : ajoutez-les dans `../img/…`, déclarez-les dans `scripts/convert-images.mjs`, puis lancez `npm run convert-images`.
 3. Nouveau logo : remplacez `src/logo-source.png` (et ajustez les zones `FULL_BOX` / `EMBLEM_BOX` du script si les proportions changent), puis lancez `npm run favicons`.
 4. Vérifiez en local avec `npm run dev`.
-5. Téléversez **uniquement les fichiers modifiés** (méthode A : à la racine ; méthode B : dans le thème enfant, en reportant les modifications dans `page-landing.php`).
-6. Videz les caches (extension, CDN, navigateur).
+5. Espace client OVH → **FTP-SSH** → **Explorateur FTP** → dossier racine :
+   - pour un ou deux fichiers modifiés : **Upload** dans la zone *Fichiers*, en confirmant l'écrasement ;
+   - pour beaucoup de fichiers (nouvelles images…) : refaites une archive ZIP **avec seulement les fichiers modifiés, en respectant l'arborescence** (`images/lesprecieuses/…`) et envoyez-la dans la zone *Archives*.
+6. Videz les caches (CDN OVH, extension WordPress, navigateur).
 
 > **Astuce cache :** les navigateurs gardent `styles.css` en mémoire. Après une modification, changez le lien dans `index.html` en `styles.css?v=2` (puis `v=3`, etc.) pour forcer le rechargement chez les visiteurs.
 
@@ -313,20 +250,23 @@ Les balises `canonical`, Open Graph et Twitter de `index.html` pointent vers `ht
 
 | Symptôme | Cause probable | Solution |
 |---|---|---|
-| L'ancienne page d'accueil WordPress s'affiche toujours | Cache | Vider le cache de l'extension, du CDN et du navigateur |
-| Idem, même après vidage du cache | `DirectoryIndex` ignoré ou serveur Nginx | Vérifier que la ligne est **au-dessus** du bloc WordPress ; sur Nginx, voir la configuration de la méthode A ; sinon, contacter l'hébergeur |
-| Page sans mise en forme | `styles.css` introuvable | Vérifier qu'il est au même niveau que `index.html` (méthode A) ou que le chemin PHP est correct (méthode B) |
-| Images manquantes | Dossier `images/` mal placé, ou casse différente | Respecter l'arborescence ; les noms de fichiers sont **sensibles à la casse** sur Linux |
-| Erreur 500 après modification du `.htaccess` | Faute de frappe | Restaurer la sauvegarde du `.htaccess` puis recommencer |
-| Les pages WordPress renvoient une erreur 404 | Règles de réécriture perdues | **Réglages → Permaliens** → *Enregistrer les modifications* (sans rien changer) |
-| Mise en page cassée avec la méthode B | Le CSS du thème s'applique | Retirer `wp_head()` ou désactiver les styles du thème (voir méthode B, étape 2.5) |
-| Le carrousel ou le menu mobile ne réagit pas (méthode C) | Le `<script>` a été filtré | L'ajouter via une extension comme *WPCode* |
+| Connexion refusée à l'Explorateur FTP | Mauvais mot de passe, ou changement pas encore pris en compte | Onglet **FTP-SSH** → `…` → **Modifier le mot de passe**, attendre quelques minutes et réessayer |
+| L'ancienne page d'accueil WordPress s'affiche toujours | Cache | Vider le cache du CDN OVH (onglet **Multisite**), de l'extension WordPress et du navigateur |
+| Idem, même après vidage du cache | Ligne `DirectoryIndex` absente, mal placée, ou fichiers dans le mauvais dossier | Vérifier que la ligne est **au-dessus** du bloc WordPress et que `index.html` est bien dans le **dossier racine** indiqué dans l'onglet **Multisite** |
+| Les fichiers sont dans `www/public/` | Le dossier `public/` a été zippé au lieu de son contenu | Supprimer `www/public/` et recommencer l'étape 4 en sélectionnant le contenu du dossier |
+| Page sans mise en forme | `styles.css` introuvable | Vérifier qu'il est au même niveau que `index.html` |
+| Images manquantes | Dossier `images/` mal placé, ou casse différente | Respecter l'arborescence ; les noms de fichiers sont **sensibles à la casse** sur l'hébergement OVH |
+| Erreur 500 après modification du `.htaccess` | Faute de frappe | Rouvrir le `.htaccess` dans l'Explorateur FTP, recoller le contenu sauvegardé à l'étape 1, puis recommencer |
+| Les pages WordPress renvoient une erreur 404 | Règles de réécriture perdues | WordPress → **Réglages → Permaliens** → *Enregistrer les modifications* (sans rien changer) |
+| Le `.htaccess` n'apparaît pas dans l'Explorateur FTP | Le fichier n'existe pas encore | WordPress → **Réglages → Permaliens** → *Enregistrer* pour le créer, ou créez-le avec **New file** dans le dossier racine |
 
 ## 10. Revenir en arrière
 
-- **Méthode A :** supprimez la ligne `DirectoryIndex index.html index.php` du `.htaccess` (ou restaurez la sauvegarde). WordPress reprend immédiatement la main sur la page d'accueil. Les fichiers de la landing peuvent rester en place ou être supprimés.
-- **Méthode B :** **Réglages → Lecture** → remettez l'ancienne page d'accueil.
-- **Méthode C :** **Réglages → Lecture** → remettez l'ancienne page d'accueil, puis supprimez le CSS additionnel.
+Depuis l'espace client OVH → **FTP-SSH** → **Explorateur FTP** → dossier racine, au choix :
+
+- **Le plus rapide :** renommez `index.html` en `index.html.off` (bouton **Rename**). Le serveur ne trouve plus `index.html` et WordPress reprend immédiatement la main sur la page d'accueil.
+- **Retour complet :** supprimez la ligne `DirectoryIndex index.html index.php` du `.htaccess` (ou recollez le contenu sauvegardé), puis supprimez les fichiers de la landing (`index.html`, `styles.css`, `images/`, favicons, `site.webmanifest`).
+- **En cas de problème grave :** onglet **FTP-SSH** → **Restaurer une sauvegarde** pour revenir à l'état des fichiers d'un jour précédent.
 
 Pensez à vider les caches après le retour en arrière.
 
