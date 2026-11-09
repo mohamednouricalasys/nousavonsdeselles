@@ -5,41 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- Primary Meta Tags -->
-  <title>Nous Avons Des Elles | Association solidaire pour les femmes</title>
-  <meta name="title" content="Nous Avons Des Elles | Association solidaire pour les femmes">
-  <meta name="description" content="Association engagée pour l'insertion professionnelle et le bien-vieillir des femmes. Découvrez nos projets Station-Cœur et Les Précieuses : boutique solidaire, accompagnement et lien social.">
-  <meta name="keywords" content="association femmes, insertion professionnelle, bien vieillir, boutique solidaire, seconde main, Station-Cœur, Les Précieuses, Île-de-France">
-  <meta name="author" content="Nous Avons Des Elles">
+  <title>Nous avons des elles</title>
+  <meta name="description" content="Réparer les objets, révéler les talents, recréer du lien. Faire du réemploi un moteur d’inclusion, de solidarité et de transition écologique." data-i18n-attr="content:hero.lead">
+  <meta name="author" content="Nous avons des ELLES">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.nousavonsdeselles.fr/">
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.nousavonsdeselles.fr/">
-  <meta property="og:title" content="Nous Avons Des Elles | Association solidaire pour les femmes">
-  <meta property="og:description" content="Association engagée pour l'insertion professionnelle et le bien-vieillir des femmes. Découvrez Station-Cœur et Les Précieuses.">
-  <meta property="og:image" content="https://www.nousavonsdeselles.fr/images/station-coeur/gallery-39.webp">
+  <meta property="og:title" content="Nous avons des elles">
+  <meta property="og:description" content="Réparer les objets, révéler les talents, recréer du lien. Faire du réemploi un moteur d’inclusion, de solidarité et de transition écologique." data-i18n-attr="content:hero.lead">
+  <meta property="og:image" content="https://www.nousavonsdeselles.fr/images/galerie/boutique-13-1600.webp">
   <meta property="og:locale" content="fr_FR">
-  <meta property="og:site_name" content="Nous Avons Des Elles">
-
-  <!-- Twitter -->
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:site_name" content="Nous avons des ELLES">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://www.nousavonsdeselles.fr/">
-  <meta name="twitter:title" content="Nous Avons Des Elles | Association solidaire pour les femmes">
-  <meta name="twitter:description" content="Association engagée pour l'insertion professionnelle et le bien-vieillir des femmes.">
-  <meta name="twitter:image" content="https://www.nousavonsdeselles.fr/images/station-coeur/gallery-39.webp">
 
-  <!-- Preload critical assets -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;500;600;700&display=swap" as="style">
-  <link rel="preload" href="images/station-coeur/gallery-39.webp" as="image" type="image/webp">
+  <!-- Language: chosen before first paint so English visitors never see a flash of French -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        var s = localStorage.getItem('nade-lang');
+        var b = (navigator.language || 'fr').slice(0, 2).toLowerCase() === 'fr' ? 'fr' : 'en';
+        var l = q || s || b;
+        if (l !== 'fr' && l !== 'en') l = 'fr';
+        d.setAttribute('data-lang', l);
+        if (l !== 'fr') d.classList.add('i18n-pending');
+      } catch (e) {}
+    })();
+  </script>
 
-  <!-- Fonts -->
+  <link rel="preload" href="images/galerie/boutique-13-1600.webp" as="image" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Favicon Package -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -51,81 +54,90 @@
 
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Nous Avons Des Elles",
+    "@type": "NGO",
+    "name": "Nous avons des ELLES",
     "url": "https://www.nousavonsdeselles.fr",
-    "description": "Association engagée pour l'insertion professionnelle et le bien-vieillir des femmes en Île-de-France",
+    "foundingDate": "2018",
+    "email": "nadira@nousavonsdeselles.fr",
+    "telephone": "+33668065857",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Maison des Associations, 3 rue de la République",
+      "postalCode": "78100",
+      "addressLocality": "Saint-Germain-en-Laye",
       "addressRegion": "Île-de-France",
       "addressCountry": "FR"
     },
-    "sameAs": []
+    "sameAs": [
+      "https://www.linkedin.com/company/nous-avons-des-elles/posts/"
+    ]
   }
   </script>
 </head>
 <body>
-  <!-- Skip to content for accessibility -->
-  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+  <a href="#main-content" class="skip-link" data-i18n="skip">Aller au contenu principal</a>
 
   <!-- Header -->
   <header class="header" role="banner">
-    <nav class="nav" aria-label="Navigation principale">
-      <a href="/" class="logo" aria-label="Nous Avons Des Elles - Accueil">
+    <nav class="nav" aria-label="Navigation principale" data-i18n-attr="aria-label:nav.label">
+      <a href="#top" class="logo" aria-label="Nous avons des ELLES, accueil" data-i18n-attr="aria-label:nav.home">
         <picture>
           <source srcset="images/logo/logo.webp" type="image/webp">
-          <img src="images/logo/logo.png" alt="Nous Avons Des Elles" class="logo-img" width="710" height="240">
+          <img src="images/logo/logo.png" alt="" class="logo-img" width="710" height="240">
         </picture>
       </a>
-      <ul class="nav-links">
-        <li><a href="https://www.nousavonsdeselles.fr/station-coeur/" class="nav-project nav-project-sc">Station-Cœur</a></li>
-        <li><a href="https://www.nousavonsdeselles.fr/les-precieuses/" class="nav-project nav-project-lp">Les Précieuses</a></li>
-        <li><a href="#projets">Nos Projets</a></li>
-        <li><a href="#galerie">Galerie</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="https://www.nousavonsdeselles.fr/station-coeur/" data-i18n-attr="href:sc.site.href" class="nav-project nav-project-sc">Station-Cœur</a></li>
+        <li><a href="https://nousavonsdeselles.fr/les-precieuses/" hreflang="fr" class="nav-project nav-project-lp">Les Précieuses</a></li>
+        <li><a href="#association" data-i18n="nav.about">Qui sommes-nous</a></li>
+        <li><a href="#projets" data-i18n="nav.projects">Nos projets</a></li>
+        <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Nous contacter</a></li>
       </ul>
-      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="nav-tools">
+        <div class="lang-switch" role="group" aria-label="Langue / Language">
+          <button type="button" class="lang-btn" data-lang="fr" lang="fr" aria-pressed="true" aria-label="Français">FR</button>
+          <button type="button" class="lang-btn" data-lang="en" lang="en" aria-pressed="false" aria-label="English">EN</button>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </nav>
   </header>
 
   <main id="main-content">
-    <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-title">
-
+    <!-- Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-content">
         <div class="hero-text">
           <h1 id="hero-title" class="hero-title">
             <span class="hero-title-line">Nous Avons</span>
             <span class="hero-title-line hero-title-accent">Des Elles</span>
           </h1>
-          <p class="hero-description">
-            Engagées pour l'insertion professionnelle et le bien-vieillir des femmes, à travers deux projets.
-          </p>
+          <p class="hero-since" data-i18n="hero.since">Association engagée depuis 2018</p>
+          <p class="hero-description" data-i18n="hero.lead">Réparer les objets, révéler les talents, recréer du lien. Faire du réemploi un moteur d’inclusion, de solidarité et de transition écologique.</p>
 
-          <nav class="hero-portals" aria-label="Accès direct aux projets">
-            <a href="https://www.nousavonsdeselles.fr/station-coeur/" class="portal portal-station">
-              <span class="portal-media"><img src="images/station-coeur/gallery-28-thumb.webp" alt="" width="240" height="240" decoding="async"></span>
+          <nav class="hero-portals" aria-label="Nos projets" data-i18n-attr="aria-label:nav.projects">
+            <a href="https://www.nousavonsdeselles.fr/station-coeur/" data-i18n-attr="href:sc.site.href" class="portal portal-station">
+              <span class="portal-media"><img src="images/logo/station-coeur-640.webp" alt="" width="640" height="360" decoding="async"></span>
               <span class="portal-body">
                 <span class="portal-title">Station-Cœur</span>
-                <span class="portal-kicker">Tiers-lieu solidaire en gare</span>
-                <span class="portal-desc">Bien-vieillir, ateliers &amp; boutique solidaire</span>
+                <span class="portal-kicker" data-i18n="portal.sc.kicker">Tiers-lieu solidaire</span>
+                <span class="portal-desc" data-i18n="portal.sc.desc">Une gare réinventée en lieu de vie solidaire, éco-responsable et intergénérationnel : ressourcerie, café, ateliers, ludothèque et bien plus.</span>
               </span>
               <span class="portal-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
             </a>
-            <a href="https://www.nousavonsdeselles.fr/les-precieuses/" class="portal portal-precieuses">
-              <span class="portal-media"><img src="images/lesprecieuses/boutique-interieur-square.webp" alt="" width="240" height="240" decoding="async"></span>
+            <a href="https://nousavonsdeselles.fr/les-precieuses/" hreflang="fr" class="portal portal-precieuses">
+              <span class="portal-media"><img src="images/logo/les-precieuses-480.webp" alt="" width="480" height="480" decoding="async"></span>
               <span class="portal-body">
                 <span class="portal-title">Les Précieuses</span>
-                <span class="portal-kicker">Mode responsable</span>
-                <span class="portal-desc">Vêtements &amp; bijoux de seconde main</span>
+                <span class="portal-kicker" data-i18n="portal.lp.kicker">Ressourcerie en entreprise</span>
+                <span class="portal-desc" data-i18n="portal.lp.desc">Un corner de seconde main élégant et nomade, installé durablement au cœur des entreprises pour sensibiliser les collaborateurs au réemploi.</span>
               </span>
               <span class="portal-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
             </a>
@@ -133,8 +145,8 @@
         </div>
 
         <div class="hero-visual">
-          <div class="hero-carousel" role="region" aria-roledescription="carrousel" aria-label="Nos projets en images" data-interval="5500">
-            <div class="hero-progress">
+          <div class="hero-carousel" data-carousel role="region" aria-roledescription="carrousel" aria-label="Nos projets" data-i18n-attr="aria-roledescription:carousel.role|aria-label:nav.projects" data-interval="5500">
+            <div class="hero-progress" data-segments>
               <button type="button" class="hero-progress-seg" aria-label="Aller à la diapositive 1"><span class="hero-progress-fill"></span></button>
               <button type="button" class="hero-progress-seg" aria-label="Aller à la diapositive 2"><span class="hero-progress-fill"></span></button>
               <button type="button" class="hero-progress-seg" aria-label="Aller à la diapositive 3"><span class="hero-progress-fill"></span></button>
@@ -144,80 +156,48 @@
               <button type="button" class="hero-progress-seg" aria-label="Aller à la diapositive 7"><span class="hero-progress-fill"></span></button>
               <button type="button" class="hero-progress-seg" aria-label="Aller à la diapositive 8"><span class="hero-progress-fill"></span></button>
             </div>
-            <ul class="hero-track">
-              <li class="hero-slide hero-slide-sc" role="group" aria-roledescription="diapositive" aria-label="1 sur 8">
-                <img src="images/station-coeur/gallery-39.webp" alt="L'équipe Station-Cœur devant la boutique solidaire de la gare" width="908" height="1210" fetchpriority="high" decoding="async" draggable="false">
-                <div class="hero-slide-caption">
-                  <span class="hero-slide-tag">Station-Cœur</span>
-                  <p class="hero-slide-text">Une équipe engagée au cœur de la gare</p>
-                  <a href="https://www.nousavonsdeselles.fr/station-coeur/" class="hero-slide-link">Visiter Station-Cœur</a>
-                </div>
+            <ul class="hero-track" data-track>
+              <li class="hero-slide hero-slide-sc" role="group" aria-roledescription="diapositive" aria-label="1 sur 8" data-i18n-attr="aria-roledescription:carousel.slide">
+                <img src="images/galerie/boutique-13-1600.webp" srcset="images/galerie/boutique-13-800.webp 800w, images/galerie/boutique-13-1600.webp 1325w" sizes="(min-width: 64rem) 32rem, 92vw" alt="L’équipe, bras ouverts, devant la boutique solidaire" data-i18n-attr="alt:hero.s1.alt" width="1325" height="1600" fetchpriority="high" decoding="async" draggable="false">
+                <div class="hero-slide-caption"><a class="hero-slide-tag" href="https://www.nousavonsdeselles.fr/station-coeur/" data-i18n-attr="href:sc.site.href">Station-Cœur</a></div>
               </li>
-              <li class="hero-slide hero-slide-lp" role="group" aria-roledescription="diapositive" aria-label="2 sur 8">
-                <img src="images/lesprecieuses/boutique-interieur-large.webp" alt="Intérieur de la boutique Les Précieuses, vêtements et accessoires de seconde main" width="1200" height="1600" loading="lazy" decoding="async" draggable="false">
-                <div class="hero-slide-caption">
-                  <span class="hero-slide-tag">Les Précieuses</span>
-                  <p class="hero-slide-text">Des corners mode de seconde main</p>
-                  <a href="https://www.nousavonsdeselles.fr/les-precieuses/" class="hero-slide-link">Visiter Les Précieuses</a>
-                </div>
+              <li class="hero-slide hero-slide-lp" role="group" aria-roledescription="diapositive" aria-label="2 sur 8" data-i18n-attr="aria-roledescription:carousel.slide">
+                <img src="images/lesprecieuses/vetements-soie-rose-large.webp" srcset="images/lesprecieuses/vetements-soie-rose-medium.webp 800w, images/lesprecieuses/vetements-soie-rose-large.webp 1200w" sizes="(min-width: 64rem) 32rem, 92vw" alt="Vêtements en soie rose sur cintres" data-i18n-attr="alt:hero.s2.alt" width="1200" height="1600" loading="lazy" decoding="async" draggable="false">
+                <div class="hero-slide-caption"><a class="hero-slide-tag" href="https://nousavonsdeselles.fr/les-precieuses/" hreflang="fr">Les Précieuses</a></div>
               </li>
-              <li class="hero-slide hero-slide-sc" role="group" aria-roledescription="diapositive" aria-label="3 sur 8">
-                <img src="images/station-coeur/gallery-28.webp" alt="Terrasse de la gare Station-Cœur, espace d'accueil et de rencontre" width="1286" height="1714" loading="lazy" decoding="async" draggable="false">
-                <div class="hero-slide-caption">
-                  <span class="hero-slide-tag">Station-Cœur</span>
-                  <p class="hero-slide-text">Un tiers-lieu ouvert à toutes les générations</p>
-                  <a href="https://www.nousavonsdeselles.fr/station-coeur/" class="hero-slide-link">Visiter Station-Cœur</a>
-                </div>
+              <li class="hero-slide hero-slide-sc" role="group" aria-roledescription="diapositive" aria-label="3 sur 8" data-i18n-attr="aria-roledescription:carousel.slide">
+                <img src="images/station-coeur/gallery-28.webp" sizes="(min-width: 64rem) 32rem, 92vw" alt="La terrasse devant la gare" data-i18n-attr="alt:hero.s3.alt" width="1286" height="1714" loading="lazy" decoding="async" draggable="false">
+                <div class="hero-slide-caption"><a class="hero-slide-tag" href="https://www.nousavonsdeselles.fr/station-coeur/" data-i18n-attr="href:sc.site.href">Station-Cœur</a></div>
               </li>
-              <li class="hero-slide hero-slide-lp" role="group" aria-roledescription="diapositive" aria-label="4 sur 8">
-                <img src="images/lesprecieuses/portant-vetements-colores-large.webp" alt="Portant de vêtements colorés de seconde main" width="1200" height="1600" loading="lazy" decoding="async" draggable="false">
-                <div class="hero-slide-caption">
-                  <span class="hero-slide-tag">Les Précieuses</span>
-                  <p class="hero-slide-text">Des pièces choisies avec soin</p>
-                  <a href="https://www.nousavonsdeselles.fr/les-precieuses/" class="hero-slide-link">Visiter Les Précieuses</a>
-                </div>
+              <li class="hero-slide hero-slide-lp" role="group" aria-roledescription="diapositive" aria-label="4 sur 8" data-i18n-attr="aria-roledescription:carousel.slide">
+                <img src="images/lesprecieuses/bijoux-boucles-oreilles-large.webp" srcset="images/lesprecieuses/bijoux-boucles-oreilles-medium.webp 800w, images/lesprecieuses/bijoux-boucles-oreilles-large.webp 1200w" sizes="(min-width: 64rem) 32rem, 92vw" alt="Boîte à bijoux et boucles d’oreilles de seconde main" data-i18n-attr="alt:hero.s4.alt" width="1200" height="1600" loading="lazy" decoding="async" draggable="false">
+                <div class="hero-slide-caption"><a class="hero-slide-tag" href="https://nousavonsdeselles.fr/les-precieuses/" hreflang="fr">Les Précieuses</a></div>
               </li>
-              <li class="hero-slide hero-slide-sc" role="group" aria-roledescription="diapositive" aria-label="5 sur 8">
-                <img src="images/station-coeur/gallery-40.webp" alt="Moment de partage entre participantes lors d'un atelier collectif" width="800" height="987" loading="lazy" decoding="async" draggable="false">
-                <div class="hero-slide-caption">
-                  <span class="hero-slide-tag">Station-Cœur</span>
-                  <p class="hero-slide-text">Ateliers, rencontres et entraide</p>
-                  <a href="https://www.nousavonsdeselles.fr/station-coeur/" class="hero-slide-link">Visiter Station-Cœur</a>
-                </div>
+              <li class="hero-slide hero-slide-sc" role="group" aria-roledescription="diapositive" aria-label="5 sur 8" data-i18n-attr="aria-roledescription:carousel.slide">
+                <img src="images/station-coeur/gallery-40.webp" sizes="(min-width: 64rem) 32rem, 92vw" alt="Moment de partage entre participantes" data-i18n-attr="alt:hero.s5.alt" width="800" height="987" loading="lazy" decoding="async" draggable="false">
+                <div class="hero-slide-caption"><a class="hero-slide-tag" href="https://www.nousavonsdeselles.fr/station-coeur/" data-i18n-attr="href:sc.site.href">Station-Cœur</a></div>
               </li>
-              <li class="hero-slide hero-slide-lp" role="group" aria-roledescription="diapositive" aria-label="6 sur 8">
-                <img src="images/lesprecieuses/bijoux-boucles-oreilles-large.webp" alt="Bijoux et boucles d'oreilles vintage" width="1200" height="1600" loading="lazy" decoding="async" draggable="false">
-                <div class="hero-slide-caption">
-                  <span class="hero-slide-tag">Les Précieuses</span>
-                  <p class="hero-slide-text">Bijoux et accessoires à petit prix</p>
-                  <a href="https://www.nousavonsdeselles.fr/les-precieuses/" class="hero-slide-link">Visiter Les Précieuses</a>
-                </div>
+              <li class="hero-slide hero-slide-lp" role="group" aria-roledescription="diapositive" aria-label="6 sur 8" data-i18n-attr="aria-roledescription:carousel.slide">
+                <img src="images/lesprecieuses/lampes-orange-retro-large.webp" srcset="images/lesprecieuses/lampes-orange-retro-medium.webp 800w, images/lesprecieuses/lampes-orange-retro-large.webp 1200w" sizes="(min-width: 64rem) 32rem, 92vw" alt="Lampes orange rétro sur une étagère" data-i18n-attr="alt:hero.s6.alt" width="1200" height="1600" loading="lazy" decoding="async" draggable="false">
+                <div class="hero-slide-caption"><a class="hero-slide-tag" href="https://nousavonsdeselles.fr/les-precieuses/" hreflang="fr">Les Précieuses</a></div>
               </li>
-              <li class="hero-slide hero-slide-sc" role="group" aria-roledescription="diapositive" aria-label="7 sur 8">
-                <img src="images/station-coeur/gallery-26.webp" alt="Boutique de vêtements solidaires Station-Cœur" width="857" height="1143" loading="lazy" decoding="async" draggable="false">
-                <div class="hero-slide-caption">
-                  <span class="hero-slide-tag">Station-Cœur</span>
-                  <p class="hero-slide-text">Une boutique solidaire et inclusive</p>
-                  <a href="https://www.nousavonsdeselles.fr/station-coeur/" class="hero-slide-link">Visiter Station-Cœur</a>
-                </div>
+              <li class="hero-slide hero-slide-sc" role="group" aria-roledescription="diapositive" aria-label="7 sur 8" data-i18n-attr="aria-roledescription:carousel.slide">
+                <img src="images/station-coeur/gallery-34.webp" sizes="(min-width: 64rem) 32rem, 92vw" alt="Bénévoles et partenaires devant la gare" data-i18n-attr="alt:hero.s7.alt" width="857" height="1143" loading="lazy" decoding="async" draggable="false">
+                <div class="hero-slide-caption"><a class="hero-slide-tag" href="https://www.nousavonsdeselles.fr/station-coeur/" data-i18n-attr="href:sc.site.href">Station-Cœur</a></div>
               </li>
-              <li class="hero-slide hero-slide-lp" role="group" aria-roledescription="diapositive" aria-label="8 sur 8">
-                <img src="images/lesprecieuses/lampes-orange-retro-large.webp" alt="Lampes design orange rétro" width="1200" height="1600" loading="lazy" decoding="async" draggable="false">
-                <div class="hero-slide-caption">
-                  <span class="hero-slide-tag">Les Précieuses</span>
-                  <p class="hero-slide-text">Objets vintage, seconde vie</p>
-                  <a href="https://www.nousavonsdeselles.fr/les-precieuses/" class="hero-slide-link">Visiter Les Précieuses</a>
-                </div>
+              <li class="hero-slide hero-slide-lp" role="group" aria-roledescription="diapositive" aria-label="8 sur 8" data-i18n-attr="aria-roledescription:carousel.slide">
+                <img src="images/lesprecieuses/vase-ceramique-tableau-large.webp" srcset="images/lesprecieuses/vase-ceramique-tableau-medium.webp 800w, images/lesprecieuses/vase-ceramique-tableau-large.webp 1200w" sizes="(min-width: 64rem) 32rem, 92vw" alt="Vase en céramique devant un portrait ancien" data-i18n-attr="alt:hero.s8.alt" width="1200" height="1600" loading="lazy" decoding="async" draggable="false">
+                <div class="hero-slide-caption"><a class="hero-slide-tag" href="https://nousavonsdeselles.fr/les-precieuses/" hreflang="fr">Les Précieuses</a></div>
               </li>
             </ul>
             <div class="hero-carousel-controls">
-              <button type="button" class="hero-ctrl hero-prev" aria-label="Diapositive précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 19l-7-7 7-7"/></svg></button>
-              <button type="button" class="hero-ctrl hero-toggle" aria-label="Mettre en pause le défilement" aria-pressed="false">
+              <button type="button" class="hero-ctrl" data-prev aria-label="Diapositive précédente" data-i18n-attr="aria-label:carousel.prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 19l-7-7 7-7"/></svg></button>
+              <button type="button" class="hero-ctrl hero-toggle" data-toggle aria-label="Mettre en pause le défilement" aria-pressed="false">
                 <svg class="hero-ring" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16" pathLength="100"/></svg>
                 <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/></svg>
                 <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
               </button>
-              <button type="button" class="hero-ctrl hero-next" aria-label="Diapositive suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>
+              <button type="button" class="hero-ctrl" data-next aria-label="Diapositive suivante" data-i18n-attr="aria-label:carousel.next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
             </div>
           </div>
           <img src="images/logo/emblem.webp" alt="" class="hero-emblem" width="256" height="256" aria-hidden="true">
@@ -225,311 +205,294 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Qui sommes-nous -->
+    <section id="association" class="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="about-title" class="section-title" data-i18n="about.title">Une association née pour recréer du lien</h2>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p data-i18n="about.p1">Fondée en 2018, Nous avons des ELLES est née d’une intuition forte : dans une société où l’isolement, la précarité et la perte de lien progressent, il devient urgent de créer des espaces où l’on peut se retrouver, transmettre, réparer et partager.</p>
+            <p data-i18n="about.p2">Nous portons une vision profondément humaine de la transition écologique : une écologie du quotidien, accessible, concrète et chaleureuse, qui rassemble plutôt qu’elle ne culpabilise.</p>
+          </div>
+          <ol class="timeline">
+            <li>
+              <span class="timeline-when">2018</span>
+              <p data-i18n="about.t1">Création de l’association avec la volonté de créer des formes concrètes de solidarité et de lien humain.</p>
+            </li>
+            <li>
+              <span class="timeline-when" data-i18n="about.t2.when">Première étape</span>
+              <p data-i18n="about.t2">Expérimentation à la Tiny House du Quai des Possibles, à Saint-Germain-en-Laye. Réseau de bénévoles, de donateurs, validation du concept.</p>
+            </li>
+            <li>
+              <span class="timeline-when" data-i18n="about.t3.when">Aujourd’hui</span>
+              <p data-i18n="about.t3">Deux projets complémentaires : Les Précieuses en entreprise et Station Cœur en gare.</p>
+            </li>
+          </ol>
+        </div>
+
+        <figure class="about-quote">
+          <blockquote>
+            <p data-i18n="about.quote">« Les objets peuvent avoir une seconde vie, les lieux peuvent retrouver une âme, et les personnes peuvent retrouver leur place. »</p>
+          </blockquote>
+          <figcaption data-i18n="about.conviction">Notre conviction : relier les enjeux sociaux aux enjeux écologiques. Le réemploi, la seconde main, la réparation et l’économie circulaire sont des leviers puissants pour protéger la planète, créer de l’activité et favoriser l’insertion.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Nos engagements (deep sage field) -->
+    <section class="values" aria-labelledby="values-title">
+      <div class="container">
+        <header class="values-header">
+          <h2 id="values-title" class="section-title section-title-light" data-i18n="values.title">Les valeurs qui nous animent</h2>
+        </header>
+
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            </div>
+            <h3 class="value-title" data-i18n="values.v1.title">Réemploi &amp; économie circulaire</h3>
+            <p class="value-description" data-i18n="values.v1.text">Valoriser vêtements, accessoires, objets et mobiliers issus du don afin de prolonger leur durée de vie et réduire le gaspillage.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            <h3 class="value-title" data-i18n="values.v2.title">Inclusion &amp; dignité</h3>
+            <p class="value-description" data-i18n="values.v2.text">Créer des espaces où chacun peut retrouver une place, une utilité, une confiance et une reconnaissance</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h3 class="value-title" data-i18n="values.v3.title">Lien intergéné&shy;rationnel</h3>
+            <p class="value-description" data-i18n="values.v3.text">Créer des ponts entre les générations par le jeu, les ateliers, la transmission et les moments de convivialité.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            </div>
+            <h3 class="value-title" data-i18n="values.v4.title">Territoires vivants</h3>
+            <p class="value-description" data-i18n="values.v4.text">Contribuer à faire émerger des lieux de proximité utiles, beaux, vivants et accessibles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nos projets: each card links to the project's own site -->
     <section id="projets" class="projects" aria-labelledby="projects-title">
       <div class="container">
         <header class="section-header">
-          <h2 id="projects-title" class="section-title">Deux projets, une mission</h2>
-          <p class="section-description">
-            Chaque projet incarne notre engagement pour l'inclusion sociale,
-            l'économie circulaire et le lien intergénérationnel.
-          </p>
+          <h2 id="projects-title" class="section-title" data-i18n="projects.title">Deux projets, une même ambition</h2>
+          <p class="section-description" data-i18n="projects.desc">Transformer les espaces du quotidien en lieux plus utiles, plus humains et plus durables.</p>
         </header>
 
         <div class="projects-grid">
-          <!-- Station-Cœur Card -->
-          <article class="project-card project-card-station">
+          <article class="project-card project-card-station" id="station-coeur">
             <div class="project-card-image">
-              <img
-                src="images/station-coeur/gallery-28.webp"
-                srcset="images/station-coeur/gallery-28.webp 800w"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                alt="Terrasse de la gare Station-Cœur - espace d'accueil et de rencontre"
-                width="600"
-                height="400"
-                loading="lazy"
-                decoding="async"
-              >
+              <img src="images/station-coeur/activity-13.webp" sizes="(min-width: 768px) 46vw, 92vw" alt="La gare qui accueille Station-Cœur, vue du quai" data-i18n-attr="alt:sc.photo.alt" width="1752" height="1188" loading="lazy" decoding="async">
               <div class="project-card-overlay"></div>
             </div>
             <div class="project-card-content">
-              <h3 class="project-card-title">Station-Cœur</h3>
-              <span class="project-card-tag">Tiers-lieu solidaire</span>
-              <p class="project-card-description">
-                Un lieu de vie en gare dédié au bien-vieillir, à l'insertion professionnelle
-                et au lien social. Ateliers, rencontres et accompagnement pour toutes les générations.
-              </p>
-              <ul class="project-card-features">
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-                  Ateliers bien-vieillir
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-                  Accompagnement emploi
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-                  Boutique solidaire
-                </li>
+              <h3 class="project-card-title"><a href="https://www.nousavonsdeselles.fr/station-coeur/" data-i18n-attr="href:sc.site.href">Station-Cœur</a></h3>
+              <span class="project-card-tag" data-i18n="portal.sc.kicker">Tiers-lieu solidaire</span>
+              <p class="project-card-lede" data-i18n="sc.title">La gare réinventée en lieu de vie solidaire</p>
+              <p class="project-card-description" data-i18n="sc.intro">Station Cœur imagine une gare transformée en véritable espace de vie : un lieu d’accueil, de services, de convivialité, de réemploi, de culture et de lien intergénérationnel.</p>
+              <ul class="project-card-chips">
+                <li data-i18n="sc.chip1">Réemploi &amp; ateliers</li>
+                <li data-i18n="sc.chip2">Lien social</li>
+                <li data-i18n="sc.chip3">Intergénérationnel</li>
               </ul>
-              <a href="https://www.nousavonsdeselles.fr/station-coeur/" class="project-card-link" aria-label="Découvrir Station-Cœur">
-                <span>Découvrir Station-Cœur</span>
-              </a>
+              <ul class="project-card-features">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="sc.f1">Ressourcerie, café-cantine, ateliers d’upcycling et de réparation</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="sc.f2">Bibliothèque d’objets et ludothèque</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="sc.f3">Événements culturels et Jardin des Papotages</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="sc.f4">Services de proximité pour habitants et voyageurs</span></li>
+              </ul>
             </div>
           </article>
 
-          <!-- Les Précieuses Card -->
-          <article class="project-card project-card-precieuses">
+          <article class="project-card project-card-precieuses" id="les-precieuses">
             <div class="project-card-image">
-              <img
-                src="images/lesprecieuses/boutique-interieur-large.webp"
-                srcset="images/lesprecieuses/boutique-interieur-medium.webp 800w, images/lesprecieuses/boutique-interieur-large.webp 1200w"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                alt="Intérieur de la boutique Les Précieuses - vêtements et accessoires de seconde main"
-                width="600"
-                height="400"
-                loading="lazy"
-                decoding="async"
-              >
+              <img src="images/lesprecieuses/boutique-interieur-large.webp" srcset="images/lesprecieuses/boutique-interieur-medium.webp 800w, images/lesprecieuses/boutique-interieur-large.webp 1200w" sizes="(min-width: 768px) 46vw, 92vw" alt="Le corner Les Précieuses : portant de vêtements, panier en osier et lampe" data-i18n-attr="alt:lp.photo.alt" width="1200" height="1600" loading="lazy" decoding="async">
               <div class="project-card-overlay"></div>
             </div>
             <div class="project-card-content">
-              <h3 class="project-card-title">Les Précieuses</h3>
-              <span class="project-card-tag">Mode responsable</span>
-              <p class="project-card-description">
-                Corners de vêtements et accessoires de seconde main en entreprise.
-                La mode durable au service de l'insertion et de la solidarité.
-              </p>
-              <ul class="project-card-features">
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-                  Vêtements sélectionnés
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-                  Bijoux et accessoires
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-                  Impact social et écologique
-                </li>
+              <h3 class="project-card-title"><a href="https://nousavonsdeselles.fr/les-precieuses/" hreflang="fr">Les Précieuses</a></h3>
+              <span class="project-card-tag" data-i18n="portal.lp.kicker">Ressourcerie en entreprise</span>
+              <p class="project-card-lede" data-i18n="lp.title">La seconde main qui s’invite au cœur des entreprises</p>
+              <p class="project-card-description" data-i18n="lp.intro">Les Précieuses est une ressourcerie éco-responsable et nomade, pensée pour s’installer durablement dans les espaces des entreprises sous la forme d’un corner de seconde main élégant et vivant.</p>
+              <ul class="project-card-chips">
+                <li data-i18n="lp.chip1">Vêtements &amp; accessoires</li>
+                <li data-i18n="lp.chip2">Action RSE concrète</li>
+                <li data-i18n="lp.chip3">Sur mesure</li>
               </ul>
-              <a href="https://www.nousavonsdeselles.fr/les-precieuses/" class="project-card-link" aria-label="Découvrir Les Précieuses">
-                <span>Découvrir Les Précieuses</span>
-              </a>
+              <ul class="project-card-features">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="lp.f1">Vêtements, accessoires, bijoux et objets soigneusement sélectionnés</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="lp.f2">Format souple : 1 mois, 3 mois ou davantage</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="lp.f3">Action RSE visible et concrète pour vos collaborateurs</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="lp.f4">Réassort régulier et animations thématiques possibles</span></li>
+              </ul>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="galerie" class="gallery" aria-labelledby="gallery-title">
+    <!-- Pour qui ? -->
+    <section class="audiences" aria-labelledby="audiences-title">
       <div class="container">
         <header class="section-header">
-          <h2 id="gallery-title" class="section-title">Notre univers</h2>
-          <p class="section-description">
-            Découvrez les moments de partage, les créations et l'atmosphère
-            chaleureuse de nos espaces solidaires.
-          </p>
+          <h2 id="audiences-title" class="section-title" data-i18n="aud.title">Des projets pensés pour croiser les publics</h2>
         </header>
+        <dl class="audience-grid">
+          <div class="audience"><dt data-i18n="aud.1.t">Seniors</dt><dd data-i18n="aud.1.d">Un lieu pour sortir de l’isolement, transmettre, participer à des activités et retrouver une place active dans la vie locale.</dd></div>
+          <div class="audience"><dt data-i18n="aud.2.t">Familles</dt><dd data-i18n="aud.2.d">Des solutions accessibles, utiles et conviviales : vêtements, objets, jeux, activités, ateliers et moments de partage.</dd></div>
+          <div class="audience"><dt data-i18n="aud.3.t">Femmes en transition</dt><dd data-i18n="aud.3.d">Un cadre bienveillant pour reprendre confiance, se rendre utile, développer des compétences et élargir son réseau.</dd></div>
+          <div class="audience"><dt data-i18n="aud.4.t">Voyageurs</dt><dd data-i18n="aud.4.d">Une gare où l’on peut boire un café, récupérer un panier, acheter responsable ou simplement se poser un instant.</dd></div>
+          <div class="audience audience-lp"><dt data-i18n="aud.5.t">Entreprises</dt><dd data-i18n="aud.5.d">Une solution concrète pour animer une démarche RSE, sensibiliser les collaborateurs et créer une action visible.</dd></div>
+          <div class="audience"><dt data-i18n="aud.6.t">Collectivités</dt><dd data-i18n="aud.6.d">Une réponse aux enjeux d’économie circulaire, de lien social, d’inclusion et de dynamisation territoriale.</dd></div>
+        </dl>
+      </div>
+    </section>
 
-        <div class="gallery-grid">
-          <figure class="gallery-item gallery-item-featured">
-            <img
-              src="images/station-coeur/gallery-39.webp"
-              alt="Équipe Station-Cœur devant la boutique solidaire - moment de convivialité entre bénévoles et participantes"
-              width="800"
-              height="600"
-              loading="lazy"
-              decoding="async"
-            >
-            <figcaption>L'équipe Station-Cœur</figcaption>
-          </figure>
+    <!-- Notre impact (coral tint) -->
+    <section class="impact" aria-labelledby="impact-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="impact-title" class="section-title" data-i18n="impact.title">Une chaîne d’impact concrète</h2>
+          <p class="section-description" data-i18n="impact.desc">Nos projets ne sont pas des actions isolées, mais des écosystèmes. Chaque geste crée une réaction en chaîne positive : pour les personnes, pour les lieux, pour le territoire.</p>
+        </header>
+        <ol class="impact-chain">
+          <li data-i18n="impact.1">Vêtement donné</li>
+          <li data-i18n="impact.2">Ressource valorisée</li>
+          <li data-i18n="impact.3">Rencontre créée</li>
+          <li data-i18n="impact.4">Compétence révélée</li>
+          <li data-i18n="impact.5">Territoire vivant</li>
+        </ol>
+      </div>
+    </section>
 
-          <figure class="gallery-item">
-            <img
-              src="images/lesprecieuses/bijoux-boucles-oreilles-large.webp"
-              alt="Collection de bijoux et boucles d'oreilles vintage - accessoires de seconde main Les Précieuses"
-              width="600"
-              height="400"
-              loading="lazy"
-              decoding="async"
-            >
-            <figcaption>Bijoux Les Précieuses</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img
-              src="images/station-coeur/gallery-26.webp"
-              alt="Boutique de vêtements solidaires Station-Cœur - espace de seconde main soigné"
-              width="600"
-              height="400"
-              loading="lazy"
-              decoding="async"
-            >
-            <figcaption>La boutique solidaire</figcaption>
-          </figure>
-
-          <figure class="gallery-item gallery-item-tall">
-            <img
-              src="images/lesprecieuses/vetements-soie-rose-large.webp"
-              alt="Vêtements en soie rose sur cintres - pièces élégantes de seconde main"
-              width="400"
-              height="600"
-              loading="lazy"
-              decoding="async"
-            >
-            <figcaption>Pièces sélectionnées</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img
-              src="images/station-coeur/gallery-34.webp"
-              alt="Bénévoles et partenaires réunis devant la gare - journée d'inauguration"
-              width="600"
-              height="400"
-              loading="lazy"
-              decoding="async"
-            >
-            <figcaption>Partenaires engagés</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img
-              src="images/lesprecieuses/objets-decoratifs-vintage-large.webp"
-              alt="Objets décoratifs vintage et livres d'art - sélection Les Précieuses"
-              width="600"
-              height="400"
-              loading="lazy"
-              decoding="async"
-            >
-            <figcaption>Objets chinés</figcaption>
-          </figure>
-
-          <figure class="gallery-item gallery-item-wide">
-            <img
-              src="images/station-coeur/gallery-40.webp"
-              alt="Moment de partage entre participantes - atelier collectif Station-Cœur"
-              width="800"
-              height="400"
-              loading="lazy"
-              decoding="async"
-            >
-            <figcaption>Moments de partage</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img
-              src="images/lesprecieuses/lampes-orange-retro-large.webp"
-              alt="Lampes design orange rétro - pièces de décoration vintage Les Précieuses"
-              width="600"
-              height="400"
-              loading="lazy"
-              decoding="async"
-            >
-            <figcaption>Design vintage</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img
-              src="images/lesprecieuses/vase-ceramique-tableau-large.webp"
-              alt="Vase céramique devant un tableau ancien - art et objets de collection"
-              width="600"
-              height="400"
-              loading="lazy"
-              decoding="async"
-            >
-            <figcaption>Art et céramique</figcaption>
-          </figure>
+    <!-- Rejoindre l'aventure -->
+    <section id="soutenir" class="support" aria-labelledby="support-title">
+      <div class="container support-grid">
+        <header class="support-head">
+          <h2 id="support-title" class="section-title" data-i18n="support.title">Rejoindre l’aventure</h2>
+          <p class="section-description" data-i18n="support.lead">Nous avons des ELLES avance grâce à l’énergie de celles et ceux qui croient en des projets concrets, humains et durables. Chaque soutien compte.</p>
+          <p class="support-note" data-i18n="support.note">Entreprises &amp; Collectivités, agissons ensemble</p>
+        </header>
+        <div class="support-tabs" data-tabs>
+          <div class="pill-tabs" role="tablist" aria-label="Rejoindre l’aventure" data-i18n-attr="aria-label:support.title">
+            <button type="button" role="tab" id="t-sup-coll" aria-controls="sup-coll" aria-selected="true" data-i18n="support.tab.coll">Collectivités</button>
+            <button type="button" role="tab" id="t-sup-ent" aria-controls="sup-ent" aria-selected="false" tabindex="-1" data-i18n="support.tab.ent">Entreprises</button>
+            <button type="button" role="tab" id="t-sup-ben" aria-controls="sup-ben" aria-selected="false" tabindex="-1" data-i18n="support.tab.ben">Bénévoles</button>
+            <button type="button" role="tab" id="t-sup-don" aria-controls="sup-don" aria-selected="false" tabindex="-1" data-i18n="support.tab.don">Donateurs</button>
+          </div>
+          <div class="support-panel" id="sup-coll" role="tabpanel" aria-labelledby="t-sup-coll" tabindex="0">
+            <h3 data-i18n="support.coll.title">Collectivités : accueillez Station Cœur</h3>
+            <p class="support-one" data-i18n="support.coll.one">Soutenez Station Cœur et participez à la création d’un tiers-lieu solidaire.</p>
+            <p data-i18n="support.coll.p1">Station Cœur répond aux besoins concrets des territoires : recréer des lieux de proximité, renforcer le lien social, soutenir les familles, accompagner les seniors et encourager le réemploi.</p>
+            <p data-i18n="support.coll.p2">Accueillir ou soutenir Station Cœur, c’est contribuer à un équipement vivant, sobre et aligné avec les enjeux actuels de transition.</p>
+            <a class="btn btn-secondary" href="mailto:nadira@nousavonsdeselles.fr" data-i18n="nav.contact">Nous contacter</a>
+          </div>
+          <div class="support-panel" id="sup-ent" role="tabpanel" aria-labelledby="t-sup-ent" tabindex="0">
+            <h3 data-i18n="support.ent.title">Entreprises : accueillez Les Précieuses</h3>
+            <p class="support-one" data-i18n="support.ent.one">Accueillez un corner Les Précieuses : une action RSE élégante et porteuse de sens.</p>
+            <p data-i18n="support.ent.p1">Avec Les Précieuses, proposez à vos collaborateurs une action RSE concrète, visible et facilement compréhensible. Un espace vivant, installé dans la durée, qui peut évoluer avec vos engagements.</p>
+            <p data-i18n="support.ent.p2">Déploiement possible en corner permanent, présence semi-permanente ou format événementiel renforcé. Chaque collaboration est pensée sur mesure.</p>
+            <a class="btn btn-secondary" href="mailto:nadira@nousavonsdeselles.fr" data-i18n="nav.contact">Nous contacter</a>
+          </div>
+          <div class="support-panel" id="sup-ben" role="tabpanel" aria-labelledby="t-sup-ben" tabindex="0">
+            <h3 data-i18n="support.tab.ben">Bénévoles</h3>
+            <p class="support-one" data-i18n="support.ben.one">Rejoignez une aventure humaine autour du réemploi, de la solidarité et du lien social.</p>
+            <a class="btn btn-secondary" href="mailto:nadira@nousavonsdeselles.fr" data-i18n="nav.contact">Nous contacter</a>
+          </div>
+          <div class="support-panel" id="sup-don" role="tabpanel" aria-labelledby="t-sup-don" tabindex="0">
+            <h3 data-i18n="support.tab.don">Donateurs</h3>
+            <p class="support-one" data-i18n="support.don.one">Contribuez au développement d’un projet utile, vivant et durable.</p>
+            <a class="btn btn-secondary" href="mailto:nadira@nousavonsdeselles.fr" data-i18n="nav.contact">Nous contacter</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Values Section -->
-    <section class="values" aria-labelledby="values-title">
+    <!-- Galerie, opened by the association's closing words (sage tint) -->
+    <section id="galerie" class="gallery" aria-label="Galerie photo" data-i18n-attr="aria-label:gallery.label">
       <div class="container">
-        <div class="values-content">
-          <header class="values-header">
-            <h2 id="values-title" class="section-title section-title-light">
-              Solidarité, durabilité, inclusion
-            </h2>
-            <p class="section-description section-description-light">
-              Chaque action que nous menons s'inscrit dans une vision où l'humain
-              et l'environnement sont au cœur de nos préoccupations.
-            </p>
-          </header>
+        <blockquote class="gallery-quote">
+          <p data-i18n="contact.quote">« Nous avons des ELLES ne crée pas seulement des projets de réemploi. L’association crée des espaces où la solidarité, l’écologie et la dignité reprennent vie. »</p>
+        </blockquote>
 
-          <div class="values-grid">
-            <div class="value-card">
-              <div class="value-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                </svg>
-              </div>
-              <h3 class="value-title">Solidarité</h3>
-              <p class="value-description">
-                Créer des liens, soutenir les parcours de vie et favoriser l'entraide locale.
-              </p>
-            </div>
+        <div class="gallery-slider" data-carousel role="region" aria-roledescription="carrousel" aria-label="Galerie photo" data-i18n-attr="aria-roledescription:carousel.role|aria-label:gallery.label" data-interval="4500">
+          <div class="gallery-viewport">
+            <ul class="gallery-track" data-track>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-01-800.webp" srcset="images/galerie/boutique-01-800.webp 800w, images/galerie/boutique-01-1600.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1067" loading="lazy" decoding="async" alt="Une cliente, sac rouge à l’épaule" data-i18n-attr="alt:gal.b01" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/station-coeur/gallery-26.webp" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="857" height="1143" loading="lazy" decoding="async" alt="Une cliente dans la boutique solidaire" data-i18n-attr="alt:gal.s26" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-07-800.webp" srcset="images/galerie/boutique-07-800.webp 800w, images/galerie/boutique-07-1600.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1067" loading="lazy" decoding="async" alt="Chapeaux et rires en terrasse" data-i18n-attr="alt:gal.b07" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/lesprecieuses/chemise-noire-detail-medium.webp" srcset="images/lesprecieuses/chemise-noire-detail-medium.webp 800w, images/lesprecieuses/chemise-noire-detail-large.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1067" loading="lazy" decoding="async" alt="Une chemise noire et son étiquette" data-i18n-attr="alt:gal.l1" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-03-800.webp" srcset="images/galerie/boutique-03-800.webp 800w, images/galerie/boutique-03-1600.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1067" loading="lazy" decoding="async" alt="Vestes et sacs sur le portant" data-i18n-attr="alt:gal.b03" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/station-coeur/gallery-21.webp" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="540" height="720" loading="lazy" decoding="async" alt="Rencontre sur le parvis de la gare" data-i18n-attr="alt:gal.s21" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-11-800.webp" srcset="images/galerie/boutique-11-800.webp 800w, images/galerie/boutique-11-1600.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1067" loading="lazy" decoding="async" alt="Rencontre devant la boutique, avec un chien" data-i18n-attr="alt:gal.b11" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-15-800.webp" srcset="images/galerie/boutique-15-800.webp 800w, images/galerie/boutique-15-1600.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1067" loading="lazy" decoding="async" alt="Quatre femmes devant la boutique en bois" data-i18n-attr="alt:gal.b15" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/station-coeur/gallery-27.webp" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="908" height="1210" loading="lazy" decoding="async" alt="Une habitante devant la gare" data-i18n-attr="alt:gal.s27" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-04-800.webp" srcset="images/galerie/boutique-04-800.webp 800w, images/galerie/boutique-04-1600.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1067" loading="lazy" decoding="async" alt="Un foulard en soie imprimé de lièvres" data-i18n-attr="alt:gal.b04" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/lesprecieuses/coffret-cadeau-bois-medium.webp" srcset="images/lesprecieuses/coffret-cadeau-bois-medium.webp 800w, images/lesprecieuses/coffret-cadeau-bois-large.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1067" loading="lazy" decoding="async" alt="Un coffret en bois prêt à offrir" data-i18n-attr="alt:gal.l2" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-06-800.webp" srcset="images/galerie/boutique-06-800.webp 800w, images/galerie/boutique-06-1600.webp 1600w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="600" loading="lazy" decoding="async" alt="Visiteuses dans la petite boutique en bois" data-i18n-attr="alt:gal.b06" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/station-coeur/gallery-31.webp" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="857" height="1143" loading="lazy" decoding="async" alt="Un sourire et un collier doré" data-i18n-attr="alt:gal.s31" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-08-800.webp" srcset="images/galerie/boutique-08-800.webp 800w, images/galerie/boutique-08-1600.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1067" loading="lazy" decoding="async" alt="Chapeau rose et panier tressé" data-i18n-attr="alt:gal.b08" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/station-coeur/activity-24-jeux.webp" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="638" height="648" loading="lazy" decoding="async" alt="Une partie de jeu entre générations" data-i18n-attr="alt:gal.a24" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-12-800.webp" srcset="images/galerie/boutique-12-800.webp 800w, images/galerie/boutique-12-1600.webp 1600w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="600" loading="lazy" decoding="async" alt="Deux sourires devant la boutique" data-i18n-attr="alt:gal.b12" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-09-800.webp" srcset="images/galerie/boutique-09-800.webp 800w, images/galerie/boutique-09-1600.webp 1052w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1217" loading="lazy" decoding="async" alt="Gilet et veste de seconde main" data-i18n-attr="alt:gal.b09" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/station-coeur/gallery-32-crop.webp" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="396" height="700" loading="lazy" decoding="async" alt="Bijoux à la lumière des guirlandes" data-i18n-attr="alt:gal.s32" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-10-800.webp" srcset="images/galerie/boutique-10-800.webp 800w, images/galerie/boutique-10-1600.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1067" loading="lazy" decoding="async" alt="Robe rouge à pois" data-i18n-attr="alt:gal.b10" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/lesprecieuses/objets-decoratifs-vintage-medium.webp" srcset="images/lesprecieuses/objets-decoratifs-vintage-medium.webp 800w, images/lesprecieuses/objets-decoratifs-vintage-large.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="600" loading="lazy" decoding="async" alt="Objets chinés sur l’étagère" data-i18n-attr="alt:gal.l3" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-14-800.webp" srcset="images/galerie/boutique-14-800.webp 800w, images/galerie/boutique-14-1600.webp 904w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1416" loading="lazy" decoding="async" alt="Robe jaune et sacs de seconde main" data-i18n-attr="alt:gal.b14" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/station-coeur/gallery-37.webp" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="618" height="824" loading="lazy" decoding="async" alt="Installation d’un panneau dans la gare" data-i18n-attr="alt:gal.s37" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-02-800.webp" srcset="images/galerie/boutique-02-800.webp 800w, images/galerie/boutique-02-1600.webp 1200w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="1067" loading="lazy" decoding="async" alt="Un trench de seconde main sur le quai" data-i18n-attr="alt:gal.b02" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/station-coeur/activity-29.webp" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="1226" height="804" loading="lazy" decoding="async" alt="Un stand de produits frais et de boissons devant la gare" data-i18n-attr="alt:gal.a29" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-16-800.webp" srcset="images/galerie/boutique-16-800.webp 800w, images/galerie/boutique-16-1600.webp 1600w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="600" loading="lazy" decoding="async" alt="Chapeau de paille et chemise verte" data-i18n-attr="alt:gal.b16" draggable="false"></figure></li>
+              <li class="gallery-slide"><figure><img src="images/galerie/boutique-05-800.webp" srcset="images/galerie/boutique-05-800.webp 800w, images/galerie/boutique-05-1600.webp 1348w" sizes="(min-width: 64rem) 28vw, (min-width: 40rem) 45vw, 88vw" width="800" height="950" loading="lazy" decoding="async" alt="Une jupe fleurie présentée devant le portant" data-i18n-attr="alt:gal.b05" draggable="false"></figure></li>
+            </ul>
+          </div>
 
-            <div class="value-card">
-              <div class="value-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                </svg>
-              </div>
-              <h3 class="value-title">Économie circulaire</h3>
-              <p class="value-description">
-                Donner une seconde vie aux objets pour un impact positif sur l'environnement.
-              </p>
-            </div>
-
-            <div class="value-card">
-              <div class="value-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-              </div>
-              <h3 class="value-title">Inclusion</h3>
-              <p class="value-description">
-                Accompagner chaque femme vers l'emploi et l'autonomie, sans discrimination.
-              </p>
+          <div class="gallery-bar">
+            <p class="gallery-counter" aria-hidden="true"><span data-counter-current>01</span> <span class="gallery-counter-sep">/</span> <span data-counter-total>26</span></p>
+            <div class="gallery-timer" aria-hidden="true"><span class="gallery-timer-fill" data-timer></span></div>
+            <div class="gallery-controls">
+              <button type="button" class="hero-ctrl gallery-ctrl" data-prev aria-label="Diapositive précédente" data-i18n-attr="aria-label:carousel.prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 19l-7-7 7-7"/></svg></button>
+              <button type="button" class="hero-ctrl gallery-ctrl hero-toggle" data-toggle aria-label="Mettre en pause le défilement" aria-pressed="false">
+                <svg class="hero-ring" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16" pathLength="100"/></svg>
+                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/></svg>
+                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+              </button>
+              <button type="button" class="hero-ctrl gallery-ctrl" data-next aria-label="Diapositive suivante" data-i18n-attr="aria-label:carousel.next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Nous contacter (coral tint) -->
     <section id="contact" class="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="contact-content">
           <header class="contact-header">
-            <h2 id="contact-title" class="section-title">Ensemble, agissons</h2>
-            <p class="section-description">
-              Vous souhaitez soutenir nos projets, devenir bénévole ou en savoir plus ?
-              Contactez-nous et rejoignez une communauté engagée.
-            </p>
+            <h2 id="contact-title" class="section-title" data-i18n="nav.contact">Nous contacter</h2>
           </header>
 
           <div class="contact-actions">
-            <a href="mailto:nous.avons.des.elles@gmail.com" class="btn btn-primary btn-large">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="mailto:nadira@nousavonsdeselles.fr" class="btn btn-primary btn-large">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
-              Nous écrire
+              <span>nadira@nousavonsdeselles.fr</span>
             </a>
             <div class="contact-info">
-              <p>
-                <strong>Email :</strong>
-                <a href="mailto:nous.avons.des.elles@gmail.com">nous.avons.des.elles@gmail.com</a>
-              </p>
-              <p>
-                <strong>Téléphone :</strong>
-                <a href="tel:+33668065857">06 68 06 58 57</a>
-              </p>
+              <p><a href="tel:+33668065857">06 68 06 58 57</a></p>
+              <p><a href="https://www.linkedin.com/company/nous-avons-des-elles/posts/" rel="noopener" data-i18n="contact.linkedin">Retrouvez-nous sur LinkedIn</a></p>
             </div>
           </div>
         </div>
@@ -542,246 +505,52 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-          <a href="/" class="footer-logo" aria-label="Nous Avons Des Elles - Accueil">
+          <a href="#top" class="footer-logo" aria-label="Nous avons des ELLES, haut de page" data-i18n-attr="aria-label:footer.top">
             <span class="logo-icon" aria-hidden="true">
               <picture>
                 <source srcset="images/logo/emblem.webp" type="image/webp">
                 <img src="images/logo/emblem.png" alt="" width="256" height="256">
               </picture>
             </span>
-            <span class="logo-text">Nous Avons Des Elles</span>
+            <span class="logo-text">Nous avons des ELLES</span>
           </a>
-          <p class="footer-tagline">Association solidaire pour les femmes</p>
+          <p class="footer-tagline" data-i18n="footer.tagline">Association engagée pour le réemploi, l’inclusion, le lien intergénérationnel et la transition écologique.</p>
         </div>
 
-        <nav class="footer-nav" aria-label="Navigation secondaire">
+        <nav class="footer-nav" aria-label="Nos projets" data-i18n-attr="aria-label:nav.projects">
           <div class="footer-nav-group">
-            <h3>Nos projets</h3>
+            <h3 data-i18n="nav.projects">Nos projets</h3>
             <ul>
-              <li><a href="https://www.nousavonsdeselles.fr/station-coeur/">Station-Cœur</a></li>
-              <li><a href="https://www.nousavonsdeselles.fr/les-precieuses/">Les Précieuses</a></li>
+              <li><a href="https://www.nousavonsdeselles.fr/station-coeur/" data-i18n-attr="href:sc.site.href">Station-Cœur</a></li>
+              <li><a href="https://nousavonsdeselles.fr/les-precieuses/" hreflang="fr">Les Précieuses</a></li>
+              <li><a href="#soutenir" data-i18n="support.title">Rejoindre l’aventure</a></li>
             </ul>
           </div>
           <div class="footer-nav-group">
-            <h3>Informations</h3>
-            <ul>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="https://www.nousavonsdeselles.fr/mentions-legales/">Mentions légales</a></li>
-              <li><a href="https://www.nousavonsdeselles.fr/politique-confidentialite/">Confidentialité</a></li>
-            </ul>
+            <h3 data-i18n="footer.addresses">Nos adresses</h3>
+            <address>
+              <strong data-i18n="footer.hq">Siège social</strong><br>
+              Maison des Associations<br>
+              3 rue de la République<br>
+              78100 Saint-Germain-en-Laye
+            </address>
+            <address>
+              <strong>Station-Cœur</strong><br>
+              Place du Maréchal Leclerc<br>
+              78170 La Celle-Saint-Cloud
+            </address>
           </div>
         </nav>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2024 Nous Avons Des Elles. Tous droits réservés.</p>
+        <p>© 2026 Nous avons des ELLES</p>
+        <p data-i18n="footer.legal">Association loi 1901, RNA : W942006742, SIRET : 101 998 078 00014</p>
       </div>
     </div>
   </footer>
 
-  <script>
-    // Mobile navigation toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    navToggle?.addEventListener('click', () => {
-      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', !isExpanded);
-      navLinks.classList.toggle('nav-open');
-      document.body.classList.toggle('nav-is-open');
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          // Close mobile nav if open
-          navLinks?.classList.remove('nav-open');
-          navToggle?.setAttribute('aria-expanded', 'false');
-          document.body.classList.remove('nav-is-open');
-
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Header scroll effect
-    const header = document.querySelector('.header');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-
-      if (currentScroll > 50) {
-        header.classList.add('header-scrolled');
-      } else {
-        header.classList.remove('header-scrolled');
-      }
-
-      lastScroll = currentScroll;
-    }, { passive: true });
-
-    // Hero carousel: swipe + timer-driven autoplay
-    (() => {
-      const root = document.querySelector('.hero-carousel');
-      if (!root) return;
-      const track = root.querySelector('.hero-track');
-      const slides = [...root.querySelectorAll('.hero-slide')];
-      const segs = [...root.querySelectorAll('.hero-progress-seg')];
-      const toggle = root.querySelector('.hero-toggle');
-      const ring = root.querySelector('.hero-ring circle');
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const interval = Number(root.dataset.interval) || 5500;
-      root.style.setProperty('--interval', interval + 'ms');
-
-      let index = 0;
-      let stopped = reduceMotion; // user-controlled pause (button)
-      let holds = new Set();      // temporary pauses (hover, focus, drag, hidden tab)
-
-      const restart = (el) => {
-        if (!el) return;
-        el.style.animation = 'none';
-        void el.offsetWidth;
-        el.style.animation = '';
-      };
-
-      const syncPause = () => {
-        const paused = stopped || holds.size > 0;
-        root.classList.toggle('is-paused', paused);
-        root.classList.toggle('is-stopped', stopped);
-        toggle.setAttribute('aria-pressed', String(stopped));
-        toggle.setAttribute('aria-label', stopped ? 'Reprendre le défilement' : 'Mettre en pause le défilement');
-      };
-
-      const preload = (i) => {
-        const img = slides[(i + slides.length) % slides.length].querySelector('img');
-        if (img && img.loading === 'lazy') img.loading = 'eager';
-      };
-
-      const goTo = (i) => {
-        index = (i + slides.length) % slides.length;
-        track.style.transform = `translateX(${-index * 100}%)`;
-        slides.forEach((s, n) => {
-          const active = n === index;
-          s.classList.toggle('is-active', active);
-          s.setAttribute('aria-hidden', String(!active));
-          s.querySelectorAll('a').forEach(a => a.tabIndex = active ? 0 : -1);
-        });
-        segs.forEach((seg, n) => {
-          seg.classList.toggle('is-active', n === index);
-          seg.classList.toggle('is-done', n < index);
-          seg.toggleAttribute('aria-current', n === index);
-        });
-        restart(ring);
-        preload(index + 1);
-      };
-
-      // The progress bar animation is the timer: when it ends, advance.
-      segs.forEach((seg, n) => seg.addEventListener('click', () => goTo(n)));
-      // The fill animation runs on a ::after pseudo-element; its animationend bubbles up here
-      root.addEventListener('animationend', (e) => {
-        if (e.animationName === 'progress-fill' && !stopped) goTo(index + 1);
-      });
-
-      root.querySelector('.hero-prev').addEventListener('click', () => goTo(index - 1));
-      root.querySelector('.hero-next').addEventListener('click', () => goTo(index + 1));
-      toggle.addEventListener('click', () => {
-        stopped = !stopped;
-        syncPause();
-      });
-
-      // Pause while hovered / focused / tab hidden
-      const hold = (key, on) => { on ? holds.add(key) : holds.delete(key); syncPause(); };
-      root.addEventListener('mouseenter', () => hold('hover', true));
-      root.addEventListener('mouseleave', () => hold('hover', false));
-      root.addEventListener('focusin', () => hold('focus', true));
-      root.addEventListener('focusout', (e) => { if (!root.contains(e.relatedTarget)) hold('focus', false); });
-      document.addEventListener('visibilitychange', () => hold('hidden', document.hidden));
-
-      // Keyboard
-      root.tabIndex = 0;
-      root.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(index - 1); }
-        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); }
-      });
-
-      // Swipe / drag
-      let startX = 0, startY = 0, dx = 0, dragging = false, decided = false, horizontal = false;
-      const width = () => root.clientWidth || 1;
-
-      root.addEventListener('pointerdown', (e) => {
-        if (e.button !== 0 || e.target.closest('button, a')) return;
-        dragging = true; decided = false; horizontal = false; dx = 0;
-        startX = e.clientX; startY = e.clientY;
-      });
-
-      root.addEventListener('pointermove', (e) => {
-        if (!dragging) return;
-        const mx = e.clientX - startX, my = e.clientY - startY;
-        if (!decided && (Math.abs(mx) > 6 || Math.abs(my) > 6)) {
-          decided = true;
-          horizontal = Math.abs(mx) > Math.abs(my);
-          if (!horizontal) { dragging = false; return; }
-          root.setPointerCapture(e.pointerId);
-          root.classList.add('is-dragging');
-          hold('drag', true);
-        }
-        if (!horizontal) return;
-        dx = mx;
-        // rubber-band at the ends
-        if ((index === 0 && dx > 0) || (index === slides.length - 1 && dx < 0)) dx *= 0.35;
-        track.style.transform = `translateX(calc(${-index * 100}% + ${dx}px))`;
-      });
-
-      const end = () => {
-        if (!dragging) return;
-        dragging = false;
-        if (!horizontal) return;
-        root.classList.remove('is-dragging');
-        hold('drag', false);
-        const threshold = Math.min(80, width() * 0.18);
-        if (dx < -threshold) goTo(index + 1);
-        else if (dx > threshold) goTo(index - 1);
-        else goTo(index);
-      };
-      root.addEventListener('pointerup', end);
-      root.addEventListener('pointercancel', end);
-
-      // Ignore clicks on slide links that were really drags
-      root.addEventListener('click', (e) => {
-        if (horizontal && Math.abs(dx) > 6 && e.target.closest('a')) { e.preventDefault(); }
-        horizontal = false; dx = 0;
-      }, true);
-
-      syncPause();
-      goTo(0);
-    })();
-
-
-    // Intersection Observer for animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.project-card, .gallery-item, .value-card, .section-header').forEach(el => {
-      el.classList.add('animate-ready');
-      observer.observe(el);
-    });
-  </script>
+  <script src="i18n.js"></script>
+  <script src="site.js"></script>
 </body>
 </html>

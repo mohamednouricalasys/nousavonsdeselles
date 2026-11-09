@@ -1,0 +1,33 @@
+[
+ {
+  "shape": "Photographic open and close, type-led chapters in tab blocks",
+  "theme": "brand",
+  "axes": "light/high-contrast-serif/chromatic-green",
+  "hero": "Settled",
+  "nav": "edge-aligned bar, sticky",
+  "footer": "statement",
+  "imagery": "the user photographs: 16 boutique, 10 Station-Coeur, 12 Les Precieuses, 13 project pictures",
+  "photos": [],
+  "entry": "none",
+  "fingerprint": "light|serif|green|settled|tabs|photo-gallery",
+  "sections": [
+   "hero",
+   "split+timeline",
+   "statement+rows",
+   "switcher(projects)+vertical chapters",
+   "grid of six in type",
+   "band: ordered chain",
+   "switcher(support)",
+   "switcher(gallery masonry)",
+   "footer statement"
+  ],
+  "signature": "the boutique days: 16 photographs of the association clients and volunteers, in the hero and the first gallery tab",
+  "waived": [
+   "65",
+   "83"
+  ],
+  "prompt": "scrap nousavonsdeselles.fr, reuse every text and gallery image, tab blocks, new showcase site",
+  "date": "2026-11-09",
+  "mode": "build"
+ }
+]

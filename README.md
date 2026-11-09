@@ -1,6 +1,6 @@
 # Landing page — Nous Avons Des Elles
 
-Page d'accueil statique (HTML/CSS/JS, sans framework) de l'association **Nous Avons Des Elles**, qui présente ses deux projets : **Station-Cœur** et **Les Précieuses**.
+Page d'accueil statique (HTML/CSS/JS, sans framework), en **français et en anglais**, de l'association **Nous Avons Des Elles** : l'association, ses valeurs, ses publics, la galerie photo, et deux cartes qui renvoient vers les sites de ses projets, **Station-Cœur** (`https://www.nousavonsdeselles.fr/station-coeur/`) et **Les Précieuses** (`https://nousavonsdeselles.fr/les-precieuses/`). Les textes sont ceux de la page d’accueil actuelle (https://www.nousavonsdeselles.fr), sans contenu repris des deux sites de projets.
 
 Elle est faite pour devenir la **page d'accueil du site WordPress existant** (`https://www.nousavonsdeselles.fr`), hébergé chez **OVHcloud** (hébergement web mutualisé). Le reste du site (pages `/station-coeur/`, `/les-precieuses/`, mentions légales, etc.) reste géré par WordPress.
 
@@ -28,10 +28,13 @@ Le déploiement décrit ici se fait **entièrement depuis l'espace client OVH**,
 ```
 nousavonsdeselles/
 ├── public/                  ← LE LIVRABLE : tout ce qui part sur l'hébergement OVH
-│   ├── index.html           ← la landing page (CSS externe, JS intégré)
+│   ├── index.html           ← la landing page, textes en français
 │   ├── styles.css
+│   ├── i18n.js              ← traductions anglaises + bouton FR/EN
+│   ├── site.js              ← menu, onglets, carrousel et galerie minutés
 │   ├── images/
-│   │   ├── logo/            ← logo et emblème (PNG + WebP)
+│   │   ├── logo/            ← logos de l'association, de Station-Cœur et des Précieuses
+│   │   ├── galerie/         ← photos de la boutique solidaire (800 et 1600 px)
 │   │   ├── lesprecieuses/   ← photos optimisées (large / medium / thumb)
 │   │   └── station-coeur/
 │   ├── favicon.ico, favicon.svg, favicon-*.png, apple-touch-icon.png, …
@@ -46,7 +49,7 @@ nousavonsdeselles/
 └── package.json
 ```
 
-> **Bon à savoir :** `index.html` utilise uniquement des **chemins relatifs** (`styles.css`, `images/...`, `favicon.svg`). Les fichiers doivent donc garder la même arborescence que dans `public/` une fois sur l'hébergement.
+> **Bon à savoir :** `index.html` utilise uniquement des **chemins relatifs** (`styles.css`, `i18n.js`, `site.js`, `images/...`, `favicon.svg`). Les fichiers doivent donc garder la même arborescence que dans `public/` une fois sur l'hébergement.
 
 ## 2. Prérequis
 
@@ -112,7 +115,7 @@ L'hébergement OVH conserve des sauvegardes automatiques, mais faites quand mêm
 Dans le dossier racine, vérifiez qu'il n'existe **pas déjà** :
 
 - un dossier `images/` ;
-- un fichier `styles.css` ;
+- un fichier `styles.css`, `i18n.js` ou `site.js` ;
 - un fichier `index.html`.
 
 Si l'un d'eux existe, **ne l'écrasez pas** : renommez l'élément côté landing (et mettez à jour les chemins dans `index.html`) avant de continuer.
@@ -121,7 +124,7 @@ Si l'un d'eux existe, **ne l'écrasez pas** : renommez l'élément côté landin
 
 Sur votre ordinateur, ouvrez le dossier `public/` du projet, puis :
 
-1. Sélectionnez **son contenu** (`index.html`, `styles.css`, `images/`, les favicons, `site.webmanifest`…), **pas** le dossier `public/` lui-même.
+1. Sélectionnez **son contenu** (`index.html`, `styles.css`, `i18n.js`, `site.js`, `images/`, les favicons, `site.webmanifest`…), **pas** le dossier `public/` lui-même.
 2. **Ne sélectionnez pas** `robots.txt` ni `sitemap.xml` si une extension SEO est installée sur WordPress (voir [section 6](#6-seo--robotstxt-et-sitemapxml)).
 3. Clic droit → **Compresser dans un fichier ZIP** (Windows 11) ou **Envoyer vers → Dossier compressé**. Nommez-le par exemple `landing.zip`.
 
@@ -132,13 +135,13 @@ Sur votre ordinateur, ouvrez le dossier `public/` du projet, puis :
 1. Dans l'Explorateur FTP, assurez-vous d'être **dans le dossier racine** (`www`).
 2. Cliquez sur **Upload** (Envoyer).
 3. Dans la zone **Archives** (et non *Fichiers*), sélectionnez `landing.zip`, puis validez : l'archive est envoyée **et décompressée automatiquement** dans le dossier courant.
-4. Revenez à la liste : `index.html`, `styles.css`, `images/`, les favicons, etc. doivent apparaître **à côté** de `index.php` et `wp-config.php`.
+4. Revenez à la liste : `index.html`, `styles.css`, `i18n.js`, `site.js`, `images/`, les favicons, etc. doivent apparaître **à côté** de `index.php` et `wp-config.php`.
 
 ```
 www/                         ← dossier racine (contient déjà wp-config.php)
 ├── index.php                ← WordPress (NE PAS supprimer)
 ├── index.html               ← nouveau
-├── styles.css               ← nouveau
+├── styles.css, i18n.js, site.js  ← nouveaux
 ├── images/                  ← nouveau
 ├── favicon.ico, favicon.svg, favicon-*.png, apple-touch-icon.png, …  ← nouveaux
 ├── site.webmanifest         ← nouveau
@@ -222,7 +225,7 @@ Les balises `canonical`, Open Graph et Twitter de `index.html` pointent vers `ht
 
 ## 7. Mettre à jour la landing page
 
-1. Modifiez `public/index.html` et/ou `public/styles.css`.
+1. Modifiez `public/index.html` et/ou `public/styles.css`. Les textes français sont dans `index.html` ; chaque texte traduit porte un attribut `data-i18n="clé"` et sa version anglaise se trouve sous la même clé dans `public/i18n.js`. Si vous changez un texte français, mettez aussi à jour sa traduction (une clé sans traduction reste affichée en français).
 2. Nouvelles photos : ajoutez-les dans `../img/…`, déclarez-les dans `scripts/convert-images.mjs`, puis lancez `npm run convert-images`.
 3. Nouveau logo : remplacez `src/logo-source.png` (et ajustez les zones `FULL_BOX` / `EMBLEM_BOX` du script si les proportions changent), puis lancez `npm run favicons`.
 4. Vérifiez en local avec `npm run dev`.
@@ -255,6 +258,7 @@ Les balises `canonical`, Open Graph et Twitter de `index.html` pointent vers `ht
 | Idem, même après vidage du cache | Ligne `DirectoryIndex` absente, mal placée, ou fichiers dans le mauvais dossier | Vérifier que la ligne est **au-dessus** du bloc WordPress et que `index.html` est bien dans le **dossier racine** indiqué dans l'onglet **Multisite** |
 | Les fichiers sont dans `www/public/` | Le dossier `public/` a été zippé au lieu de son contenu | Supprimer `www/public/` et recommencer l'étape 4 en sélectionnant le contenu du dossier |
 | Page sans mise en forme | `styles.css` introuvable | Vérifier qu'il est au même niveau que `index.html` |
+| Le bouton EN ne change rien, carrousels figés | `i18n.js` ou `site.js` introuvable | Vérifier que les deux fichiers sont au même niveau que `index.html` |
 | Images manquantes | Dossier `images/` mal placé, ou casse différente | Respecter l'arborescence ; les noms de fichiers sont **sensibles à la casse** sur l'hébergement OVH |
 | Erreur 500 après modification du `.htaccess` | Faute de frappe | Rouvrir le `.htaccess` dans l'Explorateur FTP, recoller le contenu sauvegardé à l'étape 1, puis recommencer |
 | Les pages WordPress renvoient une erreur 404 | Règles de réécriture perdues | WordPress → **Réglages → Permaliens** → *Enregistrer les modifications* (sans rien changer) |
@@ -265,7 +269,7 @@ Les balises `canonical`, Open Graph et Twitter de `index.html` pointent vers `ht
 Depuis l'espace client OVH → **FTP-SSH** → **Explorateur FTP** → dossier racine, au choix :
 
 - **Le plus rapide :** renommez `index.html` en `index.html.off` (bouton **Rename**). Le serveur ne trouve plus `index.html` et WordPress reprend immédiatement la main sur la page d'accueil.
-- **Retour complet :** supprimez la ligne `DirectoryIndex index.html index.php` du `.htaccess` (ou recollez le contenu sauvegardé), puis supprimez les fichiers de la landing (`index.html`, `styles.css`, `images/`, favicons, `site.webmanifest`).
+- **Retour complet :** supprimez la ligne `DirectoryIndex index.html index.php` du `.htaccess` (ou recollez le contenu sauvegardé), puis supprimez les fichiers de la landing (`index.html`, `styles.css`, `i18n.js`, `site.js`, `images/`, favicons, `site.webmanifest`).
 - **En cas de problème grave :** onglet **FTP-SSH** → **Restaurer une sauvegarde** pour revenir à l'état des fichiers d'un jour précédent.
 
 Pensez à vider les caches après le retour en arrière.

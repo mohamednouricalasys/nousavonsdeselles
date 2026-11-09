@@ -1,10 +1,11 @@
-/* Hallmark · v2.0.0 · built: the project · redesign: restyle · genre: playful · theme: brand (Nous Avons Des Elles logo + Station-Cœur palette) · posture: full palette (field deep sage, signal coral, seal gold, ink brown) · nav: logo left, project links, quiet contact pill (kept) · footer: brand block over two link columns (kept) · hero: Stage, timed photo carousel (by request) · job: visit the two projects · deal: manual · lint: not run (external scripts blocked in this session) */
-/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V, the layout is kept by request; variety comes from the paper ladder (paper, sand-free hero, sage well, deep sage field, coral tint, ink) instead of one white/cream alternation */
-/* Hallmark · waive 65 · cream paper, Playfair serif and a coral accent are the association's own brand, read from its logo and the Station-Cœur site */
-/* Hallmark · waive 38iii · the gold italic second line mirrors the logo, where "elles" is set apart in gold script; it appears once, in the hero */
-/* Hallmark · dropped eyebrows "Association solidaire", "Nos initiatives", "En images", "Nos valeurs", "Rejoignez-nous" · 54 names them; the headings already say it */
-/* Hallmark · dropped the hero buttons "Découvrir nos projets" and "Explorer en images", the scroll cue and the floating orbs · the project portals are the hero's actions, #projets and #galerie stay in the nav */
-/* Hallmark · reworded "Engagées pour… des femmes. Choisissez votre porte d'entrée :" to "Engagées pour… des femmes, à travers deux projets." · 58 asks for one sentence */
+/* Hallmark · v2.0.0 · built: the project · redesign: restyle (kept by request) · genre: playful · theme: brand (Nous Avons Des Elles logo + Station-Cœur palette) · posture: full palette (field deep sage, signal coral, seal gold, ink brown) · nav: logo left, project links, contact pill, FR/EN switch · footer: brand block over three link groups · hero: Stage, timed photo carousel (by request) · gallery: timed slider with filters (by request) · i18n: fr (in the page) + en (i18n.js) · job: visit the two projects · deal: manual */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R3 V3 · weakest: V, the previous look is kept by request; the new content lives in tab blocks styled as the old project cards, so each screen still carries one idea */
+/* Hallmark · waive 65 · brand spec read from nousavonsdeselles.fr and the association logo · cream paper, Playfair serif and a coral accent are the association's own brand */
+/* Hallmark · waive 38iii · the gold italic "Des Elles" line mirrors the logo, where "elles" is set apart in gold script · it appears once, in the hero */
+/* Hallmark · waive 1 · the footer group labels Nos projets, Nos adresses and Suivez-nous are small h3 set in Lato bold gold · kept from the previous design the association asked to keep */
+/* Hallmark · answered F5 · the gold coins behind the value icons and the footer emblem are the previous design, kept by request */
+/* Hallmark · dismissed F4 · the filled FR or EN button is the pressed state of the language toggle, not a second primary action */
+/* Hallmark · every photograph appears once on the page; AI-made and stock pictures from the live site are left out; Station-Cœur and Les Précieuses keep their own sites, linked from the nav, the hero, the project cards and the footer */
 
 /* --------------------------------------------------------------------------
    Tokens
@@ -210,6 +211,44 @@ p {
   padding: 0 var(--container-padding);
 }
 
+h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button:disabled,
+[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* English visitors: hold the first paint until i18n.js has swapped the text (never longer than 1.5s) */
+.i18n-pending body {
+  visibility: hidden;
+  animation: i18n-reveal 0s linear 1.5s forwards;
+}
+
+@keyframes i18n-reveal {
+  to { visibility: visible; }
+}
+
+/* Without JavaScript every tab panel shows, one under the other */
+html:not(.js) [role="tablist"],
+html:not(.js) .gallery-bar,
+html:not(.js) .hero-progress,
+html:not(.js) .hero-carousel-controls,
+html:not(.js) .lang-switch {
+  display: none;
+}
+
 /* --------------------------------------------------------------------------
    Header
    -------------------------------------------------------------------------- */
@@ -410,6 +449,47 @@ p {
   .nav-toggle[aria-expanded="true"] span:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
   }
+}
+
+.nav-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.lang-switch {
+  position: relative;
+  z-index: var(--z-modal);
+  display: inline-flex;
+  padding: var(--space-3xs);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-full);
+  background: var(--color-paper);
+}
+
+.lang-btn {
+  min-width: 2.75rem;
+  min-height: 2.5rem;
+  padding: 0 var(--space-xs);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-ink-2);
+  transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+}
+
+.lang-btn:hover {
+  color: var(--color-ink);
+  background: var(--color-paper-sage);
+}
+
+.lang-btn:active {
+  transform: translateY(1px);
+}
+
+.lang-btn[aria-pressed="true"] {
+  background: var(--color-field);
+  color: var(--color-on-field);
 }
 
 /* --------------------------------------------------------------------------
@@ -623,6 +703,7 @@ p {
   border-radius: var(--radius-xl);
   overflow: hidden;
   background: var(--color-field);
+  color: var(--color-on-photo);
   box-shadow: var(--shadow-photo);
   touch-action: pan-y;
   user-select: none;
@@ -694,7 +775,7 @@ p {
   color: var(--color-on-photo);
 }
 
-.hero-slide-caption > * {
+.js .hero-slide-caption > * {
   opacity: 0;
   transform: translateY(12px);
   transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);
@@ -901,6 +982,57 @@ p {
   .hero-visual::before {
     transform: translate(var(--space-sm), var(--space-sm));
   }
+}
+
+/* Project logos in the portals (no photograph repeated from the carousel) */
+.portal-media {
+  display: grid;
+  place-items: center;
+  background: var(--color-paper);
+}
+
+.portal-media img {
+  object-fit: contain;
+  padding: var(--space-2xs);
+}
+
+.hero-since {
+  margin: calc(var(--space-sm) * -1) 0 var(--space-md);
+  font-size: var(--text-body);
+  font-weight: 700;
+  color: var(--color-sage-ink);
+}
+
+.hero-description {
+  max-width: 40ch;
+}
+
+/* The slide tag links to the project site */
+a.hero-slide-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-md);
+  font-size: var(--text-sm);
+  transition: background-color var(--dur-short) var(--ease-out);
+}
+
+a.hero-slide-tag:hover {
+  background: var(--color-field-2);
+}
+
+.hero-slide-lp a.hero-slide-tag:hover {
+  background: var(--color-signal-hover);
+}
+
+/* Without JavaScript the carousel scrolls by hand */
+html:not(.js) .hero-carousel {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+html:not(.js) .hero-slide {
+  scroll-snap-align: start;
 }
 
 /* --------------------------------------------------------------------------
@@ -1131,93 +1263,570 @@ p {
 }
 
 /* --------------------------------------------------------------------------
-   Gallery (the association's own photographs)
+   Association (paper)
+   -------------------------------------------------------------------------- */
+.about {
+  padding: var(--section-gap) 0;
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-rule);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2xl);
+}
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+}
+
+.about-text {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.about-text p {
+  font-size: var(--text-lead);
+  line-height: 1.6;
+  color: var(--color-ink-2);
+  max-width: 60ch;
+}
+
+.timeline {
+  border-top: 1px solid var(--color-rule);
+}
+
+.timeline li {
+  display: grid;
+  gap: var(--space-2xs);
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.timeline-when {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-sage-ink);
+}
+
+.timeline p {
+  color: var(--color-ink-2);
+  max-width: 48ch;
+}
+
+.about-quote {
+  display: grid;
+  gap: var(--space-lg);
+  margin-top: var(--space-3xl);
+  padding: var(--space-2xl) var(--space-xl);
+  border-radius: var(--radius-xl);
+  background: var(--color-paper-sage);
+}
+
+@media (min-width: 1024px) {
+  .about-quote {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: end;
+    gap: var(--space-3xl);
+    padding: var(--space-3xl);
+  }
+}
+
+.about-quote blockquote p {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-field);
+  text-wrap: balance;
+}
+
+.about-quote figcaption {
+  padding-top: var(--space-md);
+  border-top: 1px solid color-mix(in oklch, var(--color-sage-ink) 30%, transparent);
+  color: var(--color-ink-2);
+}
+
+/* --------------------------------------------------------------------------
+   Project cards: additions to the previous design
+   -------------------------------------------------------------------------- */
+.project-card-lede {
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-ink);
+  max-width: 30ch;
+}
+
+.project-card-title a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.12em;
+  text-decoration-color: color-mix(in oklch, var(--card-ink) 35%, transparent);
+  transition: text-decoration-color var(--dur-short) var(--ease-out);
+}
+
+.project-card-title a:hover {
+  text-decoration-color: var(--card-ink);
+}
+
+.project-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+}
+
+.project-card-chips li {
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  background: var(--color-paper);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--card-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Audiences (paper, tinted tiles)
+   -------------------------------------------------------------------------- */
+.audiences {
+  padding: var(--section-gap) 0;
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-rule);
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .audience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .audience-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
+.audience {
+  display: grid;
+  gap: var(--space-xs);
+  align-content: start;
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+  background: var(--color-paper-sage);
+}
+
+.audience-lp {
+  background: var(--color-paper-coral);
+}
+
+.audience dt {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-sage-ink);
+}
+
+.audience-lp dt {
+  color: var(--color-signal);
+}
+
+.audience dd {
+  color: var(--color-ink-2);
+}
+
+/* --------------------------------------------------------------------------
+   Impact chain (coral tint)
+   -------------------------------------------------------------------------- */
+.impact {
+  padding: var(--section-gap-s) 0;
+  background: var(--color-paper-coral);
+}
+
+.impact-chain {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+  counter-reset: chain;
+}
+
+@media (min-width: 768px) {
+  .impact-chain {
+    position: relative;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .impact-chain::before {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 2px;
+    background: color-mix(in oklch, var(--color-signal) 35%, transparent);
+  }
+}
+
+.impact-chain li {
+  position: relative;
+  display: grid;
+  gap: var(--space-sm);
+  counter-increment: chain;
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
+.impact-chain li::before {
+  content: counter(chain);
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--color-signal);
+  color: var(--color-signal-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 700;
+  box-shadow: 0 0 0 6px var(--color-paper-coral);
+}
+
+@media (max-width: 767px) {
+  .impact-chain li {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-md);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Support (paper, pill tabs)
+   -------------------------------------------------------------------------- */
+.support {
+  padding: var(--section-gap) 0;
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-rule);
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2xl);
+}
+
+@media (min-width: 1024px) {
+  .support-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .support-head {
+    position: sticky;
+    top: calc(var(--space-3xl) + var(--space-md));
+  }
+}
+
+.support-head {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.support-note {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-signal);
+}
+
+.pill-tabs {
+  display: flex;
+  gap: var(--space-xs);
+  overflow-x: auto;
+  padding: var(--space-2xs);
+  margin: 0 calc(var(--space-2xs) * -1) var(--space-lg);
+  scrollbar-width: none;
+}
+
+.pill-tabs [role="tab"] {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-lg);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-ink);
+  white-space: nowrap;
+  transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+}
+
+.pill-tabs [role="tab"]:hover {
+  background: var(--color-paper-sage);
+}
+
+.pill-tabs [role="tab"]:active {
+  transform: translateY(1px);
+}
+
+.pill-tabs [role="tab"][aria-selected="true"] {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.support-panel {
+  display: grid;
+  gap: var(--space-md);
+  justify-items: start;
+  align-content: start;
+  min-height: 22rem;
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+  background: var(--color-paper-sage);
+}
+
+@media (min-width: 1024px) {
+  .support-panel {
+    padding: var(--space-2xl);
+  }
+}
+
+html:not(.js) .support-panel + .support-panel {
+  margin-top: var(--space-lg);
+}
+
+#sup-ent {
+  background: var(--color-paper-coral);
+}
+
+.support-panel h3 {
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+  line-height: 1.15;
+  color: var(--color-sage-ink);
+}
+
+#sup-ent h3 {
+  color: var(--color-signal);
+}
+
+.support-one {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-ink);
+  max-width: 32ch;
+}
+
+.support-panel p:not([class]) {
+  color: var(--color-ink-2);
+  max-width: 60ch;
+}
+
+.support-panel .btn {
+  margin-top: var(--space-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Gallery: a timed slider of the association's own photographs (sage tint)
    -------------------------------------------------------------------------- */
 .gallery {
   padding: var(--section-gap-s) 0 var(--section-gap);
   background: var(--color-paper-sage);
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-sm);
+.gallery-quote {
+  margin-bottom: var(--space-2xl);
 }
 
-@media (min-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-md);
+.gallery-quote p {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.1rem + 2vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  max-width: 32ch;
+  text-wrap: balance;
+}
+
+.gallery-slider {
+  --interval: 4500ms;
+  position: relative;
+  border-radius: var(--radius-xl);
+}
+
+.gallery-viewport {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html:not(.js) .gallery-viewport {
+  overflow-x: auto;
+}
+
+.gallery-track {
+  position: relative;
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+  transition: transform 700ms var(--ease-in-out);
+}
+
+.gallery-slider.is-dragging .gallery-track {
+  transition: none;
+}
+
+.gallery-slide {
+  flex: 0 0 86%;
+  cursor: grab;
+}
+
+@media (min-width: 640px) {
+  .gallery-slide {
+    flex-basis: calc((100% - var(--space-md)) / 2);
   }
 }
 
 @media (min-width: 1024px) {
-  .gallery-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .gallery-slide {
+    flex-basis: calc((100% - 2 * var(--space-md)) / 3);
   }
 }
 
-.gallery-item {
+.gallery-slider.is-dragging .gallery-slide {
+  cursor: grabbing;
+}
+
+.gallery-slide figure {
   position: relative;
+  aspect-ratio: 4 / 5;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--color-paper-sage-2);
 }
 
-.gallery-item img {
+.gallery-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  aspect-ratio: 4 / 3;
+  pointer-events: none;
+  transform: scale(1.04);
+  transition: transform 1.2s var(--ease-out);
 }
 
-.gallery-item figcaption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: var(--space-xl) var(--space-md) var(--space-sm);
-  background: linear-gradient(to top, color-mix(in oklch, var(--color-scrim) 75%, transparent), transparent);
-  color: var(--color-on-photo);
-  font-size: var(--text-sm);
-  font-weight: 700;
+.gallery-slide.is-visible img {
+  transform: none;
 }
 
-.gallery-item-featured {
-  grid-column: span 2;
-  grid-row: span 2;
+.gallery-bar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
 }
 
-.gallery-item-featured img {
-  aspect-ratio: 1;
-}
-
-.gallery-item-featured figcaption {
+.gallery-counter {
   font-family: var(--font-display);
   font-size: var(--text-title);
-  padding: var(--space-2xl) var(--space-lg) var(--space-lg);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-sage-ink);
+  white-space: nowrap;
 }
 
-@media (min-width: 768px) {
-  .gallery-item-featured img {
-    aspect-ratio: auto;
+.gallery-counter-sep {
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.gallery-timer {
+  position: relative;
+  height: 4px;
+  border-radius: 4px;
+  background: color-mix(in oklch, var(--color-sage-ink) 22%, transparent);
+  overflow: hidden;
+}
+
+.gallery-timer-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-field);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: progress-fill var(--interval) linear forwards;
+}
+
+.gallery-slider.is-paused .gallery-timer-fill,
+.gallery-slider.is-paused .hero-ring circle {
+  animation-play-state: paused;
+}
+
+.gallery-controls {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.gallery-ctrl {
+  border-color: color-mix(in oklch, var(--color-ink) 25%, transparent);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.gallery-ctrl:hover {
+  background: var(--color-paper-sage-2);
+}
+
+.gallery-slider .hero-ring circle {
+  stroke: var(--color-field);
+}
+
+.gallery-slider.is-stopped .hero-toggle .icon-play { display: block; }
+.gallery-slider.is-stopped .hero-toggle .icon-pause { display: none; }
+
+.gallery-slider.is-static .gallery-timer,
+.gallery-slider.is-static .gallery-controls {
+  visibility: hidden;
+}
+
+@media (max-width: 480px) {
+  .gallery-bar {
+    grid-template-columns: auto minmax(0, 1fr);
   }
-}
 
-.gallery-item-tall {
-  grid-row: span 2;
-}
-
-.gallery-item-tall img {
-  aspect-ratio: 3 / 4;
-}
-
-.gallery-item-wide {
-  grid-column: span 2;
-}
-
-.gallery-item-wide img {
-  aspect-ratio: 2 / 1;
+  .gallery-timer {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1252,7 +1861,15 @@ p {
 
 @media (min-width: 768px) {
   .values-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-2xl);
+  }
+}
+
+@media (min-width: 1280px) {
+  .values-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 0;
   }
 }
 
@@ -1262,13 +1879,22 @@ p {
   column-gap: var(--space-md);
   row-gap: var(--space-xs);
   align-items: center;
+  align-content: start;
   padding: var(--space-xl) 0;
   border-bottom: 1px solid var(--color-field-rule);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
+  .value-title {
+    font-size: clamp(1.25rem, 0.6rem + 1vw, 1.5rem);
+    hyphens: auto;
+  }
+
   .value-card {
-    padding: var(--space-xl) var(--space-xl) 0;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    row-gap: var(--space-md);
+    padding: var(--space-xl) var(--space-lg) 0;
     border-bottom: 0;
     border-left: 1px solid var(--color-field-rule);
   }
@@ -1374,6 +2000,13 @@ p {
   text-decoration-color: var(--color-signal);
 }
 
+@media (max-width: 480px) {
+  .contact-actions .btn-large {
+    font-size: var(--text-body);
+    padding: 0 var(--space-lg);
+  }
+}
+
 /* --------------------------------------------------------------------------
    Footer (ink)
    -------------------------------------------------------------------------- */
@@ -1462,16 +2095,37 @@ p {
   color: var(--color-rule);
 }
 
+.footer address {
+  font-style: normal;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-rule);
+}
+
+.footer address + address {
+  margin-top: var(--space-md);
+}
+
+.footer address strong {
+  color: var(--color-paper);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-xl);
+}
+
 /* --------------------------------------------------------------------------
    The one reveal (added by script, so content shows without it)
    -------------------------------------------------------------------------- */
-.animate-ready {
+.js .animate-ready {
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
 }
 
-.animate-in {
+.js .animate-in {
   opacity: 1;
   transform: none;
 }
@@ -1504,8 +2158,8 @@ p {
     scroll-behavior: auto;
   }
 
-  .animate-ready,
-  .hero-slide-caption > * {
+  .js .animate-ready,
+  .js .hero-slide-caption > * {
     opacity: 1;
     transform: none;
   }
@@ -1514,6 +2168,20 @@ p {
   .hero-slide.is-active img {
     transform: none;
     animation: none;
+  }
+}
+
+/* The timers keep their pace (they are progress bars, not motion); the slides move instantly */
+@media (prefers-reduced-motion: reduce) {
+  .hero-progress-seg.is-active .hero-progress-fill::after,
+  .gallery-timer-fill,
+  .hero-ring circle {
+    animation-duration: var(--interval) !important;
+  }
+
+  .gallery-slide img {
+    transform: none;
+    transition: none;
   }
 }
 
@@ -1535,5 +2203,16 @@ p {
   body {
     color: var(--color-ink);
     background: var(--color-paper);
+  }
+}
+@media print {
+  .nav-tools,
+  .gallery-bar,
+  .pill-tabs {
+    display: none;
+  }
+
+  [role="tabpanel"][hidden] {
+    display: block !important;
   }
 }
