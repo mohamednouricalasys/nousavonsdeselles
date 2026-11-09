@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Landing Page -->
+  <url>
+    <loc>https://www.nousavonsdeselles.fr/</loc>
+    <lastmod>2024-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/station-coeur/gallery-39.webp</image:loc>
+      <image:title>Équipe Nous Avons Des Elles</image:title>
+      <image:caption>L'équipe de l'association devant la boutique solidaire</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Station-Cœur -->
+  <url>
+    <loc>https://www.nousavonsdeselles.fr/station-coeur/</loc>
+    <lastmod>2024-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Les Précieuses -->
+  <url>
+    <loc>https://www.nousavonsdeselles.fr/les-precieuses/</loc>
+    <lastmod>2024-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://www.nousavonsdeselles.fr/mentions-legales/</loc>
+    <lastmod>2024-11-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.nousavonsdeselles.fr/politique-confidentialite/</loc>
+    <lastmod>2024-11-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

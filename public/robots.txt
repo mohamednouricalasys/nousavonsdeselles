@@ -1,0 +1,11 @@
+# Robots.txt for Nous Avons Des Elles
+# https://www.nousavonsdeselles.fr
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.nousavonsdeselles.fr/sitemap.xml
+
+# Crawl-delay (optional, for politeness)
+Crawl-delay: 1

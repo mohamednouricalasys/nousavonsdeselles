@@ -1,0 +1,42 @@
+{
+  "name": "Nous Avons Des Elles",
+  "short_name": "NADE",
+  "description": "Association solidaire pour l'insertion professionnelle et le bien-vieillir des femmes",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#6b9670",
+  "background_color": "#fbf4eb",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/icon-512.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "apple touch icon"
+    }
+  ],
+  "categories": ["nonprofit", "social"],
+  "lang": "fr",
+  "dir": "ltr"
+}

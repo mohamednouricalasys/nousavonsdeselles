@@ -1,0 +1,15 @@
+{
+  "name": "nousavonsdeselles-landing",
+  "version": "1.0.0",
+  "description": "Landing page for Nous Avons Des Elles - Station-Cœur & Les Précieuses",
+  "type": "module",
+  "scripts": {
+    "convert-images": "node scripts/convert-images.mjs",
+    "favicons": "node scripts/generate-favicons.mjs",
+    "build": "npm run convert-images",
+    "dev": "npx serve public"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
+}
