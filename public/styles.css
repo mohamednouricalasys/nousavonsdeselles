@@ -46,6 +46,9 @@
 
   --color-seal: oklch(74% 0.135 75);
   --color-seal-ink: oklch(57% 0.12 68);
+  /* Gold for small text (the section eyebrows): 4.8:1 or more on every light paper, 4.9:1 on the field */
+  --color-seal-text: oklch(52% 0.11 66);
+  --color-seal-on-field: oklch(84% 0.11 82);
 
   --color-focus: oklch(58% 0.19 36);
   --color-focus-on-dark: oklch(80% 0.13 78);
@@ -65,8 +68,10 @@
   --text-sm: 0.9375rem;
   --text-body: 1.0625rem;
   --text-lead: clamp(1.125rem, 1rem + 0.45vw, 1.3125rem);
+  --text-eyebrow: 0.875rem;
   --text-title: clamp(1.375rem, 1.15rem + 0.8vw, 1.75rem);
-  --text-section: clamp(2.25rem, 1.4rem + 2.6vw, 3.5rem);
+  /* Section titles at the size of the Station-Cœur site: 30px on phones, 48px from about 1300px */
+  --text-section: clamp(1.875rem, 1.35rem + 2.1vw, 3rem);
   --text-display: clamp(3rem, 1.5rem + 4.6vw, 5.25rem);
 
   /* Space */
@@ -82,6 +87,8 @@
   --space-4xl: 9rem;
   --section-gap: clamp(var(--space-3xl), 6rem + 3vw, var(--space-4xl));
   --section-gap-s: clamp(var(--space-2xl), 4rem + 3vw, 7.5rem);
+  /* Between a section head and the photos, cards or slider below it: 48px on phones, up to 80px */
+  --space-head: clamp(3rem, 1.5rem + 3.5vw, 5rem);
 
   /* Layout */
   --container-max: 85rem;
@@ -1158,29 +1165,47 @@ html:not(.js) .hero-slide {
 }
 
 /* --------------------------------------------------------------------------
-   Section heads (left-aligned, heading beside its line)
+   Section heads, after the Station-Cœur site: a small gold eyebrow, a serif
+   title of moderate size and at most one lead, stacked in one narrow column,
+   then a wide gap before the photos, cards or slider they introduce.
    -------------------------------------------------------------------------- */
 .section-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
   gap: var(--space-md);
-  margin-bottom: var(--space-2xl);
+  max-width: 48rem;
+  margin-bottom: var(--space-head);
 }
 
-@media (min-width: 1024px) {
-  .section-header {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    align-items: end;
-    gap: var(--space-3xl);
-  }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-seal-text);
+}
+
+/* "– •" before the label; the empty alternative keeps screen readers quiet */
+.eyebrow::before {
+  content: "\2013\00A0\2022";
+  content: "\2013\00A0\2022" / "";
+}
+
+.eyebrow-light {
+  color: var(--color-seal-on-field);
 }
 
 .section-title {
   font-size: var(--text-section);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: 1.18;
+  letter-spacing: -0.005em;
   color: var(--color-ink);
-  max-width: 16ch;
+  max-width: 25ch;
 }
 
 .section-title-light {
@@ -1190,8 +1215,8 @@ html:not(.js) .hero-slide {
 .section-description {
   font-size: var(--text-lead);
   color: var(--color-ink-2);
-  line-height: 1.55;
-  max-width: 42ch;
+  line-height: 1.6;
+  max-width: 42rem;
 }
 
 .section-description-light {
@@ -1491,9 +1516,11 @@ html:not(.js) .hero-slide {
   gap: var(--space-2xl);
 }
 
+/* Two equal halves, as on the Station-Cœur site: the title gets room to sit on
+   two lines, and the carousel (32rem at most) keeps its own space */
 @media (min-width: 1024px) {
   .showcase-layout {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
     gap: var(--space-3xl);
   }
@@ -1503,23 +1530,7 @@ html:not(.js) .hero-slide {
   display: grid;
   justify-items: start;
   gap: var(--space-md);
-  max-width: 34rem;
-}
-
-.showcase-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-size: var(--text-sm);
-  font-weight: 700;
-  color: var(--color-ink);
-}
-
-.showcase-eyebrow img {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px var(--color-paper);
+  max-width: 36rem;
 }
 
 .showcase-text .section-title {
@@ -1736,12 +1747,15 @@ html:not(.js) .hero-slide {
   gap: var(--space-md);
 }
 
+/* Light italic, so the section keeps a single bold title; the deeper rose
+   keeps 4.8:1 now that the line is no longer bold */
 .support-note {
   font-family: var(--font-display);
   font-size: var(--text-title);
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--color-signal);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--color-rose-deep);
 }
 
 .pill-tabs {
@@ -1842,18 +1856,15 @@ html:not(.js) .support-panel + .support-panel {
   background: var(--color-paper-sage);
 }
 
-.gallery-quote {
-  margin-bottom: var(--space-2xl);
-}
-
+/* The association's words open the gallery under its eyebrow: set as a light
+   italic quote rather than a second bold title, so the slider gets the stage */
 .gallery-quote p {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 1.1rem + 2vw, 3rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.375rem, 1.1rem + 1vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.35;
   color: var(--color-ink);
-  max-width: 32ch;
   text-wrap: balance;
 }
 
@@ -2089,21 +2100,6 @@ html:not(.js) .gallery-viewport {
   color: var(--color-on-field);
 }
 
-.values-header {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-md);
-  margin-bottom: var(--space-3xl);
-}
-
-@media (min-width: 1024px) {
-  .values-header {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    align-items: end;
-    gap: var(--space-3xl);
-  }
-}
-
 .values-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -2199,12 +2195,11 @@ html:not(.js) .gallery-viewport {
 .partners-header {
   text-align: center;
   justify-items: center;
-  margin-bottom: var(--space-2xl);
+  margin-inline: auto;
 }
 
 .partners-header .section-title {
   color: var(--color-on-field);
-  max-width: none;
 }
 
 .partners-header .section-description {

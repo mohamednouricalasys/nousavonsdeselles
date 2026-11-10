@@ -79,6 +79,7 @@
     'about.conviction': 'Our conviction: linking social issues with ecological ones. Reuse, second-hand, repair and the circular economy are powerful levers to protect the planet, create activity and help people back into work.',
 
     /* Values */
+    'eyebrow.values': 'Our values',
     'values.title': 'The values that drive us',
     'values.v1.title': 'Reuse & circular economy',
     'values.v1.text': 'Giving value to donated clothes, accessories, objects and furniture to extend their life and reduce waste.',
@@ -129,6 +130,7 @@
     'showcase.c4': 'And much more',
 
     /* Who for */
+    'eyebrow.audiences': 'Who it’s for',
     'aud.title': 'Projects designed to bring different people together',
     'aud.1.t': 'Seniors',
     'aud.1.d': 'A place to break out of isolation, pass on knowledge, take part in activities and regain an active role in local life.',
@@ -144,6 +146,7 @@
     'aud.6.d': 'An answer to the challenges of circular economy, social connection, inclusion and local revitalisation.',
 
     /* Our impact */
+    'eyebrow.impact': 'Our impact',
     'impact.title': 'A tangible chain of impact',
     'impact.desc': 'Our projects are not isolated actions but ecosystems. Every gesture sets off a positive chain reaction: for people, for places, for the community.',
     'impact.1': 'A garment donated',
@@ -153,6 +156,7 @@
     'impact.5': 'A living community',
 
     /* Join the adventure */
+    'eyebrow.support': 'Support us',
     'support.title': 'Join the adventure',
     'support.lead': 'Nous avons des ELLES moves forward thanks to the energy of everyone who believes in practical, human and sustainable projects. Every bit of support counts.',
     'support.note': 'Companies & local authorities, let’s act together',
@@ -172,6 +176,7 @@
     'support.don.one': 'Help develop a useful, lively and sustainable project.',
 
     /* Gallery */
+    'eyebrow.gallery': 'Gallery',
     'contact.quote': '“Nous avons des ELLES does not only create reuse projects. The association creates spaces where solidarity, ecology and dignity come back to life.”',
     'gallery.label': 'Photo gallery',
     'gal.t1': 'Welcome!',
@@ -198,6 +203,7 @@
     'gal.c11': 'Mosaic: a meeting with a dog, hats on the terrace, the whole crew in front of the shop, a shared moment on the steps',
 
     /* Partners */
+    'eyebrow.partners': 'Our partners',
     'partners.title': 'They support us',
     'partners.desc': 'Companies, institutions and partners: each contributes to a project that combines reuse and solidarity.',
 
