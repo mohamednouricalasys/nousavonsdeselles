@@ -6,6 +6,7 @@
   "scripts": {
     "convert-images": "node scripts/convert-images.mjs",
     "favicons": "node scripts/generate-favicons.mjs",
+    "split-images": "node scripts/build-split-images.mjs",
     "build": "npm run convert-images",
     "dev": "npx serve public"
   },
