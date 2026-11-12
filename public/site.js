@@ -282,7 +282,7 @@
         if (entry.isIntersecting) { entry.target.classList.add('animate-in'); io.unobserve(entry.target); }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.section-header, .value-card, .audience, .impact-chain li').forEach(function (el) {
+    document.querySelectorAll('.section-header, .value-card, .audience, .impact-chain li, .support-tabs').forEach(function (el) {
       el.classList.add('animate-ready');
       io.observe(el);
     });

@@ -2,9 +2,14 @@
 #  .gitignore — Landing page « Nous Avons Des Elles »
 # =============================================================
 #  Note : le dossier public/ (y compris public/images/) EST versionné.
-#  C'est le livrable déployé sur WordPress, et les photos sources
-#  (../img/) se trouvent en dehors du dépôt.
+#  C'est le livrable déployé sur WordPress. Les photos originales
+#  (img/) ne le sont pas : voir ci-dessous.
 # -------------------------------------------------------------
+
+# --- Photos originales ----------------------------------------
+# Lourdes, et les photos d'iPhone contiennent la position GPS de la
+# prise de vue. `npm run photos` en tire public/images/photos/.
+img/
 
 # --- Dépendances Node -----------------------------------------
 node_modules/

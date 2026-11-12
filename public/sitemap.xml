@@ -5,13 +5,95 @@
   <!-- Landing Page -->
   <url>
     <loc>https://www.nousavonsdeselles.fr/</loc>
-    <lastmod>2024-11-09</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://www.nousavonsdeselles.fr/images/station-coeur/gallery-39.webp</image:loc>
-      <image:title>Équipe Nous Avons Des Elles</image:title>
-      <image:caption>L'équipe de l'association devant la boutique solidaire</image:caption>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/station-coeur-groupe-bras-leves-tiny-house-1200.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/les-precieuses-jupe-fleurie-seconde-main-1200.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/station-coeur-sourires-devant-la-tiny-house-1200.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/station-coeur-complicite-quai-des-possibles-1200.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/station-coeur-terrasse-tiny-house-1200.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/station-coeur-sourire-entre-generations-1197.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/les-precieuses-portant-vetements-seconde-main-1200.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/jeu-de-societe-entre-generations-720.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/essayage-boucles-oreilles-seconde-main-736.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/cafe-seniors-terrasse-devant-la-gare-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/chemisier-vert-et-chapeau-de-paille-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/cercle-de-discussion-720.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/bijoux-seconde-main-736.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/stand-produits-locaux-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/sourires-boutique-solidaire-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/pull-jaune-portant-seconde-main-736.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/conversation-sur-les-marches-tiny-house-720.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/portrait-lumiere-hiver-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/balade-en-fauteuil-devant-la-tiny-house-719.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/veste-et-foulard-seconde-main-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/potager-petits-et-grands-546.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/portrait-chapeau-de-paille-686.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/essayage-polo-seconde-main-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/gare-facade-et-pelouse-711.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/fillette-et-bijoux-523.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/flacons-en-verre-chines-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/plants-a-la-main-quai-des-possibles-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/essayage-collier-entraide-719.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nousavonsdeselles.fr/images/photos/gare-vue-aerienne-train-708.webp</image:loc>
     </image:image>
   </url>
 

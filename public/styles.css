@@ -15,9 +15,11 @@
   --color-paper: oklch(97% 0.014 78);
   --color-paper-sage: oklch(94.5% 0.024 145);
   --color-paper-sage-2: oklch(91.5% 0.032 145);
-  /* Soft warm orange paper tones (terracotta) */
-  --color-paper-coral: oklch(96% 0.022 55);
-  --color-paper-coral-2: oklch(93% 0.035 52);
+  /* Sober neutral gray paper (replaces the former pink-coral tint): a whisper of
+     cool hue keeps it modern without reading as blue. Ink stays at 12:1 or more,
+     the terracotta titles (large text only) at 3.2:1, as on the old tint */
+  --color-paper-mist: oklch(95.5% 0.004 250);
+  --color-paper-mist-2: oklch(92% 0.006 250);
   --color-ink: oklch(28% 0.035 50);
   --color-ink-2: oklch(45% 0.03 55);
   --color-muted: oklch(52% 0.025 60);
@@ -257,6 +259,7 @@ button:disabled,
 
 /* Without JavaScript every tab panel shows, one under the other */
 html:not(.js) [role="tablist"],
+html:not(.js) .pill-tabs-prompt,
 html:not(.js) .gallery-bar,
 html:not(.js) .hero-progress,
 html:not(.js) .hero-carousel-controls,
@@ -614,8 +617,8 @@ html:not(.js) .lang-switch {
 }
 
 .portal-precieuses {
-  --portal-bg: var(--color-paper-coral);
-  --portal-bg-hover: var(--color-paper-coral-2);
+  --portal-bg: var(--color-paper-mist);
+  --portal-bg-hover: var(--color-paper-mist-2);
   --portal-ink: var(--color-signal);
   --portal-disc: var(--color-signal);
 }
@@ -719,7 +722,7 @@ html:not(.js) .lang-switch {
 }
 
 .hero-carousel {
-  --interval: 4000ms;
+  --interval: 3200ms; /* 25 % faster than the former 4s */
   position: relative;
   aspect-ratio: 4 / 5;
   max-height: calc(100svh - 10rem);
@@ -1230,7 +1233,7 @@ html:not(.js) .hero-slide {
 }
 
 .project-card-precieuses {
-  --card-bg: var(--color-paper-coral);
+  --card-bg: var(--color-paper-mist);
   --card-ink: var(--color-signal);
 }
 
@@ -1249,16 +1252,6 @@ html:not(.js) .hero-slide {
 
 .project-card:hover .project-card-image img {
   transform: scale(1.05);
-}
-
-/* Portrait photo in a landscape frame: keep the faces, not the pavement */
-.project-card-station .project-card-image img {
-  object-position: 50% 18%;
-}
-
-/* Keep the employee, on the left of the photo, in the frame */
-.project-card-precieuses .project-card-image img {
-  object-position: 30% 50%;
 }
 
 .project-card-overlay {
@@ -1478,13 +1471,13 @@ html:not(.js) .hero-slide {
 }
 
 /* --------------------------------------------------------------------------
-   Showcase: Les Précieuses in place (terracotta tint, text beside a collage carousel)
+   Showcase: Les Précieuses in place (gray tint, text beside a collage carousel)
    The carousel is the hero's component (.hero-visual > .hero-carousel): same
    split images, card deal, sticker captions, progress bar and glass controls.
    -------------------------------------------------------------------------- */
 .showcase {
   padding: var(--section-gap) 0;
-  background: var(--color-paper-coral);
+  background: var(--color-paper-mist);
 }
 
 .showcase-layout {
@@ -1604,7 +1597,7 @@ html:not(.js) .hero-slide {
 }
 
 .audience-lp {
-  background: var(--color-paper-coral);
+  background: var(--color-paper-mist);
 }
 
 .audience dt {
@@ -1624,11 +1617,11 @@ html:not(.js) .hero-slide {
 }
 
 /* --------------------------------------------------------------------------
-   Impact chain (terracotta tint)
+   Impact chain (gray tint)
    -------------------------------------------------------------------------- */
 .impact {
   padding: var(--section-gap-s) 0;
-  background: var(--color-paper-coral);
+  background: var(--color-paper-mist);
 }
 
 .impact-chain {
@@ -1680,7 +1673,7 @@ html:not(.js) .hero-slide {
   font-family: var(--font-body);
   font-size: var(--text-body);
   font-weight: 700;
-  box-shadow: 0 0 0 6px var(--color-paper-coral);
+  box-shadow: 0 0 0 6px var(--color-paper-mist);
 }
 
 @media (max-width: 767px) {
@@ -1735,32 +1728,98 @@ html:not(.js) .hero-slide {
   color: var(--color-terracotta-deep);
 }
 
+/* The four profiles read as a choice to make: a prompt, then raised buttons, each with
+   its icon in a coloured disc. Two by two in a narrow column (all four in sight, nothing
+   hidden in a sideways scroll), four in a row when the column is wide enough */
+.support-tabs {
+  container: support-tabs / inline-size;
+}
+
+.pill-tabs-prompt {
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--color-ink-2);
+}
+
 .pill-tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-xs);
-  overflow-x: auto;
-  padding: var(--space-2xs);
-  margin: 0 calc(var(--space-2xs) * -1) var(--space-lg);
-  scrollbar-width: none;
+  margin-bottom: var(--space-lg);
+}
+
+@container support-tabs (min-width: 42rem) {
+  .pill-tabs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .pill-tabs [role="tab"] {
-  flex-shrink: 0;
-  display: inline-flex;
+  --tab-accent: var(--color-field);
+  display: flex;
   align-items: center;
-  min-height: 2.75rem;
-  padding: 0 var(--space-lg);
-  border: 2px solid var(--color-ink);
+  gap: var(--space-xs);
+  min-height: 3.25rem;
+  padding: var(--space-2xs) var(--space-md) var(--space-2xs) var(--space-2xs);
+  border: 1.5px solid color-mix(in oklch, var(--color-ink) 18%, transparent);
   border-radius: var(--radius-full);
+  /* A shade lighter than the paper, so the buttons lift off it */
+  background: oklch(99.3% 0.006 78);
+  box-shadow: 0 10px 20px -14px color-mix(in oklch, var(--color-ink) 55%, transparent);
   font-size: var(--text-sm);
   font-weight: 700;
+  line-height: 1.15;
+  text-align: left;
   color: var(--color-ink);
-  white-space: nowrap;
-  transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+  transition: transform var(--dur-short) var(--ease-out),
+              box-shadow var(--dur-short) var(--ease-out),
+              border-color var(--dur-short) var(--ease-out),
+              background-color var(--dur-short) var(--ease-out),
+              color var(--dur-short) var(--ease-out);
 }
 
-.pill-tabs [role="tab"]:hover {
-  background: var(--color-paper-sage);
+/* Each profile keeps its colour: sage for local authorities (Station Cœur), terracotta for
+   companies (Les Précieuses), gold for volunteers, coral for donors */
+#t-sup-ent { --tab-accent: var(--color-terracotta-deep); }
+#t-sup-ben { --tab-accent: var(--color-seal-ink); }
+#t-sup-don { --tab-accent: var(--color-signal); }
+
+.pill-tab-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: color-mix(in oklch, var(--tab-accent) 14%, transparent);
+  color: var(--tab-accent);
+  transition: background-color var(--dur-short) var(--ease-out),
+              color var(--dur-short) var(--ease-out),
+              transform var(--dur-long) var(--ease-spring);
+}
+
+.pill-tab-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Hover (on devices that can hover, so a tap leaves nothing behind): the button rises
+   in its colour and the icon disc fills and tilts */
+@media (hover: hover) {
+  .pill-tabs [role="tab"]:not([aria-selected="true"]):hover {
+    border-color: var(--tab-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 26px -16px color-mix(in oklch, var(--tab-accent) 75%, transparent);
+  }
+
+  .pill-tabs [role="tab"]:not([aria-selected="true"]):hover .pill-tab-icon {
+    background: var(--tab-accent);
+    color: var(--color-on-photo);
+    transform: rotate(-10deg) scale(1.08);
+  }
 }
 
 .pill-tabs [role="tab"]:active {
@@ -1768,11 +1827,42 @@ html:not(.js) .hero-slide {
 }
 
 .pill-tabs [role="tab"][aria-selected="true"] {
+  border-color: var(--color-ink);
   background: var(--color-ink);
   color: var(--color-paper);
+  box-shadow: 0 12px 22px -14px color-mix(in oklch, var(--color-ink) 85%, transparent);
+  cursor: default;
+}
+
+.pill-tabs [role="tab"][aria-selected="true"] .pill-tab-icon {
+  background: var(--tab-accent);
+  color: var(--color-on-photo);
+}
+
+/* Once the block scrolls into view, the four icons hop one after the other, just before
+   the call to action's arrow nudges, then rest: an invitation, not a loop */
+.support-tabs.animate-in .pill-tab-icon {
+  animation: tab-hop 640ms var(--ease-out) 380ms;
+}
+
+.support-tabs.animate-in [role="tab"]:nth-child(2) .pill-tab-icon { animation-delay: 500ms; }
+.support-tabs.animate-in [role="tab"]:nth-child(3) .pill-tab-icon { animation-delay: 620ms; }
+.support-tabs.animate-in [role="tab"]:nth-child(4) .pill-tab-icon { animation-delay: 740ms; }
+
+@keyframes tab-hop {
+  0%, 100% { transform: none; }
+  35% { transform: translateY(-6px) rotate(-12deg); }
+  65% { transform: translateY(0) rotate(6deg); }
 }
 
 .support-panel {
+  /* The call to action takes the project's colour: deep sage here, terracotta for companies */
+  --cta-bg: var(--color-field);
+  --cta-bg-hover: var(--color-field-2);
+  --cta-ink: var(--color-on-field);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: grid;
   gap: var(--space-md);
   justify-items: start;
@@ -1781,6 +1871,46 @@ html:not(.js) .hero-slide {
   padding: var(--space-xl);
   border-radius: var(--radius-xl);
   background: var(--color-paper-sage);
+  transition: box-shadow var(--dur-long) var(--ease-out);
+}
+
+/* A soft gold halo in the corner; it opens up on hover, drawing the eye to the action */
+.support-panel::before {
+  content: '';
+  position: absolute;
+  top: -6rem;
+  right: -6rem;
+  z-index: -1;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--color-seal) 30%, transparent), transparent);
+  opacity: 0.7;
+  pointer-events: none;
+  transition: transform 700ms var(--ease-out), opacity 700ms var(--ease-out);
+}
+
+.support-panel:hover {
+  box-shadow: var(--shadow-soft);
+}
+
+.support-panel:hover::before {
+  transform: scale(1.3);
+  opacity: 1;
+}
+
+/* Switching tabs: the panel's lines rise in, one after the other */
+.js .support-panel:not([hidden]) > * {
+  animation: panel-rise 520ms var(--ease-out) backwards;
+}
+
+.js .support-panel > :nth-child(2) { animation-delay: 60ms; }
+.js .support-panel > :nth-child(3) { animation-delay: 120ms; }
+.js .support-panel > :nth-child(4) { animation-delay: 180ms; }
+.js .support-panel > :nth-child(5) { animation-delay: 240ms; }
+
+@keyframes panel-rise {
+  from { opacity: 0; transform: translateY(10px); }
 }
 
 @media (min-width: 1024px) {
@@ -1794,7 +1924,10 @@ html:not(.js) .support-panel + .support-panel {
 }
 
 #sup-ent {
-  background: var(--color-paper-coral);
+  --cta-bg: var(--color-terracotta-deep);
+  --cta-bg-hover: oklch(45% 0.135 44);
+  --cta-ink: var(--color-signal-ink);
+  background: var(--color-paper-mist);
 }
 
 .support-panel h3 {
@@ -1825,6 +1958,86 @@ html:not(.js) .support-panel + .support-panel {
   margin-top: var(--space-sm);
 }
 
+/* The block's call to action: filled, with an arrow disc that leans forward.
+   Label on the fill: about 7:1 on deep sage, 5.5:1 on deep terracotta */
+.btn-cta {
+  position: relative;
+  overflow: hidden;
+  gap: var(--space-sm);
+  min-height: 3.25rem;
+  padding: var(--space-xs) var(--space-xs) var(--space-xs) var(--space-xl);
+  background: var(--cta-bg, var(--color-field));
+  color: var(--cta-ink, var(--color-on-field));
+  white-space: normal;
+  text-align: left;
+  line-height: 1.25;
+  box-shadow: 0 12px 24px -14px color-mix(in oklch, var(--cta-bg, var(--color-field)) 70%, transparent);
+  transition: background-color var(--dur-short) var(--ease-out),
+              transform var(--dur-short) var(--ease-out),
+              box-shadow var(--dur-short) var(--ease-out);
+}
+
+.btn-cta-arrow {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: color-mix(in oklch, var(--cta-ink, var(--color-on-field)) 18%, transparent);
+  transition: transform var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out);
+}
+
+.btn-cta-arrow svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+/* One light sweep crosses the button on hover, then rests */
+.btn-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, color-mix(in oklch, var(--color-on-photo) 22%, transparent) 50%, transparent 65%);
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+.btn-cta:hover,
+.btn-cta:focus-visible {
+  background: var(--cta-bg-hover, var(--color-field-2));
+  transform: translateY(-2px);
+  box-shadow: 0 18px 30px -14px color-mix(in oklch, var(--cta-bg, var(--color-field)) 80%, transparent);
+}
+
+.btn-cta:hover::after,
+.btn-cta:focus-visible::after {
+  transform: translateX(100%);
+  transition: transform 750ms var(--ease-out);
+}
+
+.btn-cta:hover .btn-cta-arrow,
+.btn-cta:focus-visible .btn-cta-arrow {
+  transform: translateX(3px);
+  background: color-mix(in oklch, var(--cta-ink, var(--color-on-field)) 28%, transparent);
+}
+
+.btn-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 16px -12px color-mix(in oklch, var(--cta-bg, var(--color-field)) 70%, transparent);
+}
+
+/* Once the block scrolls into view, and at each tab change, the arrow nudges
+   forward twice, then stays still: an invitation, not a loop */
+.support-tabs.animate-in .support-panel:not([hidden]) .btn-cta-arrow {
+  animation: cta-nudge 900ms var(--ease-in-out) 900ms 2;
+}
+
+@keyframes cta-nudge {
+  0%, 100% { transform: none; }
+  50% { transform: translateX(5px); }
+}
+
 /* --------------------------------------------------------------------------
    Gallery: a timed slider of the association's own photographs (sage tint)
    -------------------------------------------------------------------------- */
@@ -1846,7 +2059,7 @@ html:not(.js) .support-panel + .support-panel {
 }
 
 .gallery-slider {
-  --interval: 3500ms;
+  --interval: 2800ms; /* 25 % faster than the former 3.5s */
   position: relative;
   border-radius: var(--radius-xl);
 }
@@ -1868,7 +2081,9 @@ html:not(.js) .gallery-viewport {
   display: flex;
   gap: var(--space-md);
   list-style: none;
-  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* A soft start and a long, gentle landing: the row glides rather than jumps */
+  transition: transform 600ms cubic-bezier(0.3, 0, 0.15, 1);
+  will-change: transform;
 }
 
 .gallery-slider.is-dragging .gallery-track {
@@ -1920,12 +2135,14 @@ html:not(.js) .gallery-viewport {
   pointer-events: none;
 }
 
-/* The photos in view zoom slowly, like the hero's active one */
-.gallery-slide.is-visible img {
+/* The photos zoom slowly, like the hero's active one. Every photo breathes, in
+   view or not, so a photo leaving the frame keeps its scale instead of snapping
+   back to full size mid-slide */
+.js .gallery-slide img {
   animation: breathe calc(var(--interval) * 2) ease-in-out infinite alternate;
 }
 
-.gallery-slider.is-paused .gallery-slide.is-visible img {
+.gallery-slider.is-paused .gallery-slide img {
   animation-play-state: paused;
 }
 
@@ -1966,7 +2183,7 @@ html:not(.js) .gallery-viewport {
 }
 
 .gallery-slide.is-visible .gallery-tag {
-  transition-delay: 0.25s;
+  transition-delay: 0.3s;
 }
 
 .gallery-bar {
@@ -2222,11 +2439,11 @@ html:not(.js) .gallery-viewport {
 }
 
 /* --------------------------------------------------------------------------
-   Contact (terracotta tint)
+   Contact (gray tint)
    -------------------------------------------------------------------------- */
 .contact {
   padding: var(--section-gap-s) 0;
-  background: var(--color-paper-coral);
+  background: var(--color-paper-mist);
 }
 
 .contact-content {
@@ -2454,12 +2671,23 @@ html:not(.js) .gallery-viewport {
   .js .hero-slide.is-active ~ .hero-slide,
   .js .hero-slide-caption > .hero-slide-tag,
   .hero-visual:has(.hero-slide:nth-child(even).is-active) .hero-emblem,
-  .gallery-slide.is-visible img,
+  .js .gallery-slide img,
   .js .gallery-slide:not(.is-visible) figure,
   .js .gallery-slide.is-visible ~ .gallery-slide:not(.is-visible) figure,
-  .js .gallery-slide:not(.is-visible) .gallery-tag {
+  .js .gallery-slide:not(.is-visible) .gallery-tag,
+  .js .support-panel:not([hidden]) > *,
+  .support-tabs.animate-in .support-panel:not([hidden]) .btn-cta-arrow,
+  .support-tabs.animate-in .pill-tab-icon,
+  .pill-tabs [role="tab"]:not([aria-selected="true"]):hover,
+  .pill-tabs [role="tab"]:not([aria-selected="true"]):hover .pill-tab-icon,
+  .btn-cta:hover,
+  .btn-cta:hover .btn-cta-arrow {
     transform: none;
     animation: none;
+  }
+
+  .btn-cta::after {
+    display: none;
   }
 
   .hero-visual:has(.hero-slide:nth-child(even).is-active) {
@@ -2499,6 +2727,7 @@ html:not(.js) .gallery-viewport {
 @media print {
   .nav-tools,
   .gallery-bar,
+  .pill-tabs-prompt,
   .pill-tabs {
     display: none;
   }
