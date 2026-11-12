@@ -58,11 +58,10 @@
     'carousel.prev': 'Previous slide',
     'carousel.next': 'Next slide',
     'hero.s1.alt': 'The team, arms wide open, in front of the solidarity shop',
-    'hero.s2.alt': 'Two colleagues choosing second-hand clothes together, and colleagues on a coffee break at the office',
+    'hero.s2.alt': 'Donated clothes being packed for collection, and a volunteer sorting the donations with a smile',
     'hero.s3.alt': 'Hats and smiles on the terrace in front of the station',
     'hero.s4.alt': 'A shared moment on the steps',
-    'hero.s5.alt': 'A volunteer sorting donated clothes, beside a donations box and clothes being packed for collection',
-    'hero.s6.alt': 'Two smiles in front of the shop',
+    'hero.s5.alt': 'Two smiles in front of the shop',
 
     /* Who we are */
     'about.title': 'An association born to rebuild connections',

@@ -1,15 +1,17 @@
 /**
  * Slide images: the photos behind the hero carousel and the photo gallery.
  *
- *   hero      the hero carousel     6 slides, 1200 / 800 px wide
+ *   hero      the hero carousel     5 slides, 1200 / 800 px wide
  *   galerie   the photo gallery     5 photos, 1000 / 600 px wide
  *
- * Every slide is 4:5. Most are one photo cropped around a focus point. Les
- * Précieuses slides are splits: two or three photos on a clean grid, parted by a thin
+ * Every slide is 4:5. Most are one photo cropped around a focus point. The Les
+ * Précieuses slide is a split: two photos on a clean grid, parted by a thin
  * paper-coloured gutter, with no shadow, sticker, shape or other decoration.
- * Only photos with a social meaning: people and shared moments, for Les
- * Précieuses too (colleagues, volunteers, donations). Sources are the optimized
- * WebP photos already in public/images; the Les Précieuses ones come from its own site.
+ * Only photos with a social meaning: people and shared moments. Sources are the
+ * optimized WebP photos already in public/images. Les Précieuses photos are taken only
+ * from its own page, https://nousavonsdeselles.fr/les-precieuses/ (images/lesprecieuses/:
+ * collecte-dons = collecte.webp, tri-des-dons = selection.webp, collaboratrice-seconde-main
+ * = hero.webp, the project card).
  *
  *   npm run split-images              # every set
  *   npm run split-images -- galerie   # one set (or several, comma separated)
@@ -61,17 +63,6 @@ const LAYOUTS = {
     { x: 0, y: 0, w: W, h: H - 880 - G },
     { x: 0, y: H - 880, w: W, h: 880 },
   ],
-  /* two tall photos side by side */
-  diptych: [
-    { x: 0, y: 0, w: (W - G) / 2, h: H },
-    { x: (W + G) / 2, y: 0, w: (W - G) / 2, h: H },
-  ],
-  /* one tall photo beside two stacked ones */
-  stack: [
-    { x: 0, y: 0, w: (W - G) / 2, h: H },
-    { x: (W + G) / 2, y: 0, w: (W - G) / 2, h: (H - G) / 2 },
-    { x: (W + G) / 2, y: (H + G) / 2, w: (W - G) / 2, h: (H - G) / 2 },
-  ],
 };
 
 async function split(layout, photos) {
@@ -89,32 +80,23 @@ const slide = (s) => (s.split ? split(s.split, s.photos) : photo(s));
 
 /* ------------------------------------------------------------------ the sets */
 const SETS = {
-  /* The hero carousel: Station-Cœur photos, with a Les Précieuses split every third slide.
+  /* The hero carousel: Station-Cœur photos, with one Les Précieuses split.
      No clothes close-ups, no goods on display: the crops keep racks and stock out of frame,
      and Les Précieuses is shown through the people around it. */
   hero: {
     sizes: [1200, 800],
     slides: [
       ['station-coeur/gallery-49.webp', { x: 0, y: 0.45, zoom: 1.25 }], /* the team, arms open (the rail on the right is cut out) */
-      { /* Les Précieuses, between colleagues: two of them browsing the corner together, over
-           a coffee break at the office */
+      { /* Les Précieuses, the solidarity behind it: donated clothes packed for collection, over
+           a volunteer sorting the donations */
         split: 'feature',
         photos: [
-          ['lesprecieuses/shopping-entre-collegues.webp', { y: 0.45 }],
-          ['lesprecieuses/pause-cafe-collegues.webp', { y: 0.55 }],
+          ['lesprecieuses/collecte-dons.webp', { y: 0.4 }],
+          ['lesprecieuses/tri-des-dons.webp', { y: 0.38 }],
         ],
       },
       ['galerie/boutique-07-1600.webp', { y: 0.6 }], /* hats on the terrace, in front of the station */
       ['station-coeur/gallery-40.webp', { x: 1, y: 0.5, zoom: 1.15 }], /* a shared moment on the steps (the hanging bag is cut out) */
-      { /* Les Précieuses, the solidarity behind it: a volunteer sorting donations, beside the
-           donations box and donated clothes being packed */
-        split: 'stack',
-        photos: [
-          ['lesprecieuses/tri-des-dons.webp', { x: 0.5 }],
-          ['lesprecieuses/benevole-dons.webp', { x: 0.4 }],
-          ['lesprecieuses/collecte-dons.webp', { x: 0.45, y: 0.55 }],
-        ],
-      },
       ['galerie/boutique-12-1600.webp', { x: 0.38 }], /* two smiles in front of the shop */
     ],
   },

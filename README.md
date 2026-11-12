@@ -74,7 +74,7 @@ Scripts disponibles :
 |---|---|
 | `npm run dev` | Prévisualise `public/` dans le navigateur |
 | `npm run convert-images` | Convertit les photos de `../img/` en WebP (3 tailles) vers `public/images/` |
-| `npm run split-images` | Compose en 4:5 les diapositives du carrousel d’accueil (6, dont 2 compositions « split » Les Précieuses sur grille épurée) et de la galerie photo (5), sans décor, à partir des photos de `public/images/` vers `public/images/splits/`. Pour un seul jeu : `npm run split-images -- galerie` |
+| `npm run split-images` | Compose en 4:5 les diapositives du carrousel d’accueil (5, dont une composition « split » Les Précieuses sur grille épurée, avec uniquement des images de la page https://nousavonsdeselles.fr/les-precieuses/) et de la galerie photo (5), sans décor, à partir des photos de `public/images/` vers `public/images/splits/`. Pour un seul jeu : `npm run split-images -- galerie` |
 | `npm run favicons` | Régénère logo + favicons depuis `src/logo-source.png` vers `public/` **et** `wordpress-favicons/` |
 | `npm run build` | Alias de `convert-images` |
 
