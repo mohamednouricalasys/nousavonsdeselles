@@ -7,8 +7,9 @@
 # -------------------------------------------------------------
 
 # --- Photos originales ----------------------------------------
-# Lourdes, et les photos d'iPhone contiennent la position GPS de la
-# prise de vue. `npm run photos` en tire public/images/photos/.
+# Le site n'utilise que les WebP de public/images/photos/. Des photos
+# originales déposées ici ne doivent jamais partir sur le dépôt : elles
+# sont lourdes, et celles des téléphones contiennent la position GPS.
 img/
 
 # --- Dépendances Node -----------------------------------------

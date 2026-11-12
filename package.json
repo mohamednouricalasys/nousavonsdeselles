@@ -4,15 +4,11 @@
   "description": "Landing page for Nous Avons Des Elles - Station-Cœur & Les Précieuses",
   "type": "module",
   "scripts": {
-    "photos": "node scripts/build-photos.mjs",
     "favicons": "node scripts/generate-favicons.mjs",
-    "build": "npm run photos",
+    "build": "echo \"Static site: public/ is deployed as is (photos are prebuilt WebP files)\"",
     "dev": "npx serve public"
   },
   "dependencies": {
     "sharp": "^0.33.5"
-  },
-  "devDependencies": {
-    "heic-decode": "^2.1.0"
   }
 }

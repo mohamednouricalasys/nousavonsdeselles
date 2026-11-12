@@ -35,15 +35,13 @@ nousavonsdeselles/
 │   ├── images/
 │   │   ├── logo/            ← logos de l'association, de Station-Cœur et des Précieuses
 │   │   ├── partners/        ← logos des partenaires
-│   │   └── photos/          ← photos du carrousel, des cartes projets et de la galerie (WebP, construites depuis img/)
+│   │   └── photos/          ← photos du carrousel, des cartes projets et de la galerie (WebP, versionnées)
 │   ├── favicon.ico, favicon.svg, favicon-*.png, apple-touch-icon.png, …
 │   ├── site.webmanifest
 │   ├── robots.txt
 │   └── sitemap.xml
-├── img/                     ← photos originales (HEIC d'iPhone, JPEG de WhatsApp), non versionnées
 ├── wordpress-favicons/      ← kit de favicons prêt à téléverser dans WordPress
 ├── scripts/
-│   ├── build-photos.mjs     ← photos du site, nettoyées, recadrées et converties en WebP depuis img/
 │   └── generate-favicons.mjs← génération du logo et des favicons
 ├── src/logo-source.png      ← logo source (haute définition, fond transparent)
 └── package.json
@@ -72,11 +70,10 @@ Scripts disponibles :
 | Commande | Rôle |
 |---|---|
 | `npm run dev` | Prévisualise `public/` dans le navigateur |
-| `npm run photos` | Construit les photos du site depuis `img/` vers `public/images/photos/` : décodage des HEIC, couleurs Display P3 converties en sRGB, nettoyage (bandes noires de vidéo, barre de lecture, bandeaux et barre d’accueil des captures d’écran, marges blanches des collages), recadrage (4:5 pour le carrousel et la galerie, 4:3 pour les cartes projets), WebP sans métadonnées (ni EXIF ni position GPS), en deux largeurs quand la photo est assez grande, sans jamais l'agrandir. Pour quelques photos seulement : `npm run photos -- nom1,nom2` |
 | `npm run favicons` | Régénère logo + favicons depuis `src/logo-source.png` vers `public/` **et** `wordpress-favicons/` |
-| `npm run build` | Alias de `photos` |
+| `npm run build` | Ne construit rien : le site est statique et `public/` est publié tel quel. La commande existe parce que Vercel la lance à chaque déploiement |
 
-> Les photos originales sont dans `img/`, qui n'est **pas** versionné : fichiers lourds, et les photos d'iPhone contiennent la position GPS de la prise de vue. Le site n'utilise que ces photos, chacune une seule fois ; les doublons de `img/` (copies identiques, seconde prise d'un même moment) sont listés en tête de `scripts/build-photos.mjs`. Les images optimisées de `public/images/` sont, elles, versionnées.
+> Les photos du site sont les fichiers WebP de `public/images/photos/`, versionnés avec le reste de `public/`. Aucune photo source n'est nécessaire pour construire ou déployer le site.
 
 ---
 
@@ -226,7 +223,7 @@ Les balises `canonical`, Open Graph et Twitter de `index.html` pointent vers `ht
 ## 7. Mettre à jour la landing page
 
 1. Modifiez `public/index.html` et/ou `public/styles.css`. Les textes français sont dans `index.html` ; chaque texte traduit porte un attribut `data-i18n="clé"` et sa version anglaise se trouve sous la même clé dans `public/i18n.js`. Si vous changez un texte français, mettez aussi à jour sa traduction (une clé sans traduction reste affichée en français).
-2. Nouvelles photos : ajoutez-les dans `img/`, déclarez-les dans la liste `PHOTOS` de `scripts/build-photos.mjs` (nom de fichier SEO, format, zone propre, point de cadrage), lancez `npm run photos`, puis placez-les dans `index.html` avec leur texte alternatif (et sa traduction dans `i18n.js`).
+2. Nouvelles photos : convertissez-les en WebP (par exemple avec [Squoosh](https://squoosh.app/), qui retire les métadonnées, dont la position GPS des photos de téléphone), recadrées au format de leur emplacement (4:5 pour le carrousel et la galerie, 4:3 pour les cartes projets), avec un nom de fichier descriptif en minuscules et tirets. Déposez-les dans `public/images/photos/`, puis placez-les dans `index.html` avec leur texte alternatif (et sa traduction dans `i18n.js`).
 3. Nouveau logo : remplacez `src/logo-source.png` (et ajustez les zones `FULL_BOX` / `EMBLEM_BOX` du script si les proportions changent), puis lancez `npm run favicons`.
 4. Vérifiez en local avec `npm run dev`.
 5. Espace client OVH → **FTP-SSH** → **Explorateur FTP** → dossier racine :
