@@ -1,6 +1,6 @@
 /* Hallmark · v2.0.0 · built: the project · redesign: restyle (kept by request) · genre: playful · theme: brand (Nous Avons Des Elles logo + Station-Cœur palette) · posture: full palette (field deep sage, signal coral, seal gold, ink brown) · nav: logo left, project links, contact pill, FR/EN switch · footer: brand block over three link groups · hero: Stage, timed photo carousel (by request) · gallery: timed slider with filters (by request) · i18n: fr (in the page) + en (i18n.js) · job: visit the two projects · deal: manual */
 /* Hallmark · pre-emit critique: P4 H4 E4 S5 R3 V3 · weakest: V, the previous look is kept by request; the new content lives in tab blocks styled as the old project cards, so each screen still carries one idea */
-/* Hallmark · waive 65 · brand spec read from nousavonsdeselles.fr and the association logo · cream paper, Playfair serif and a coral accent are the association's own brand */
+/* Hallmark · waive 65 · brand spec read from nousavonsdeselles.fr and the association logo · cream paper, Playfair serif and a terracotta accent are the association's own brand */
 /* Hallmark · waive 38iii · the gold italic "Des Elles" line mirrors the logo, where "elles" is set apart in gold script · it appears once, in the hero */
 /* Hallmark · waive 1 · the footer group labels Nos projets, Nos adresses and Suivez-nous are small h3 set in Lato bold gold · kept from the previous design the association asked to keep */
 /* Hallmark · answered F5 · the gold coins behind the value icons and the footer emblem are the previous design, kept by request */
@@ -15,9 +15,9 @@
   --color-paper: oklch(97% 0.014 78);
   --color-paper-sage: oklch(94.5% 0.024 145);
   --color-paper-sage-2: oklch(91.5% 0.032 145);
-  /* Soft pastel rose paper tones */
-  --color-paper-coral: oklch(96% 0.025 10);
-  --color-paper-coral-2: oklch(93% 0.038 8);
+  /* Soft warm orange paper tones (terracotta) */
+  --color-paper-coral: oklch(96% 0.022 55);
+  --color-paper-coral-2: oklch(93% 0.035 52);
   --color-ink: oklch(28% 0.035 50);
   --color-ink-2: oklch(45% 0.03 55);
   --color-muted: oklch(52% 0.025 60);
@@ -33,16 +33,16 @@
   --color-sage: oklch(62% 0.09 150);
   --color-sage-ink: oklch(45% 0.085 158);
 
-  /* Soft pastel rose palette - warm, elegant, subtle */
-  --color-signal: oklch(65% 0.12 12);
-  --color-signal-hover: oklch(58% 0.14 10);
-  --color-signal-soft: oklch(78% 0.08 15);
-  --color-signal-ink: oklch(98% 0.01 80);
+  /* Professional warm orange palette - terracotta, elegant, sophisticated */
+  --color-signal: oklch(62% 0.135 50);
+  --color-signal-hover: oklch(55% 0.15 48);
+  --color-signal-soft: oklch(76% 0.09 52);
+  --color-signal-ink: oklch(98% 0.01 60);
 
-  /* Rose accent tones */
-  --color-rose: oklch(72% 0.10 8);
-  --color-rose-deep: oklch(55% 0.14 5);
-  --color-rose-light: oklch(92% 0.04 10);
+  /* Terracotta accent tones */
+  --color-terracotta: oklch(68% 0.12 50);
+  --color-terracotta-deep: oklch(50% 0.14 45);
+  --color-terracotta-light: oklch(92% 0.04 55);
 
   --color-seal: oklch(74% 0.135 75);
   --color-seal-ink: oklch(57% 0.12 68);
@@ -698,11 +698,9 @@ html:not(.js) .lang-switch {
   margin: 0 auto;
 }
 
-/* Seal block, offset behind the collage: gold for Station-Cœur, rose for Les Précieuses.
-   It tips on every other slide; the hero alternates projects, so it tips on Les Précieuses. */
+/* Seal block, offset behind the photo: gold for Station-Cœur, terracotta for Les Précieuses. */
 .hero-visual {
   --seal-shift: var(--space-lg);
-  --seal-tilt: 0deg;
 }
 
 .hero-visual::before {
@@ -711,17 +709,13 @@ html:not(.js) .lang-switch {
   inset: 0;
   border-radius: var(--radius-xl);
   background: var(--color-seal);
-  transform: translate(var(--seal-shift), var(--seal-shift)) rotate(var(--seal-tilt));
-  transition: background-color 600ms var(--ease-out), transform 800ms var(--ease-spring);
+  transform: translate(var(--seal-shift), var(--seal-shift));
+  transition: background-color 600ms var(--ease-out);
   z-index: -1;
 }
 
-.hero-visual:has(.hero-slide:nth-child(even).is-active) {
-  --seal-tilt: 2.5deg;
-}
-
 .hero-visual:has(.hero-slide-lp.is-active)::before {
-  background: var(--color-rose);
+  background: var(--color-terracotta);
 }
 
 .hero-carousel {
@@ -771,22 +765,7 @@ html:not(.js) .lang-switch {
   pointer-events: none;
 }
 
-/* The collages are dealt like cards: the one leaving tips away, the next one
-   springs flat onto the table, then slowly breathes while its timer runs. */
-.js .hero-slide {
-  border-radius: var(--radius-xl);
-  transform: scale(0.82) rotate(-6deg);
-  transition: transform 800ms var(--ease-spring);
-}
-
-.js .hero-slide.is-active ~ .hero-slide {
-  transform: scale(0.82) rotate(6deg);
-}
-
-.js .hero-slide.is-active {
-  transform: none;
-}
-
+/* The active photo slowly zooms while its timer runs */
 .hero-slide.is-active img {
   animation: breathe var(--interval) ease-in-out forwards;
 }
@@ -840,22 +819,16 @@ html:not(.js) .lang-switch {
   color: var(--color-signal-ink);
 }
 
-/* The tag is a sticker slapped on the collage */
+/* A soft shadow keeps the tag legible on any photo */
 .hero-slide-tag {
   box-shadow: 0 10px 20px -10px color-mix(in oklch, var(--color-ink) 70%, transparent);
 }
 
 .js .hero-slide-caption > .hero-slide-tag {
-  transform: translateY(12px) scale(0.5) rotate(10deg);
-  transition: opacity var(--dur-long) var(--ease-out), transform 650ms var(--ease-spring), background-color var(--dur-short) var(--ease-out);
-}
-
-.hero-slide.is-active .hero-slide-caption > .hero-slide-tag {
-  transform: rotate(-4deg);
+  transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out), background-color var(--dur-short) var(--ease-out);
 }
 
 .hero-slide.is-active .hero-slide-caption > a.hero-slide-tag:hover {
-  transform: rotate(2deg) scale(1.06);
   transition-delay: 0s;
 }
 
@@ -985,7 +958,7 @@ html:not(.js) .lang-switch {
   height: 1.1rem;
 }
 
-/* On the light collages the hero controls are dark glass, so they read on any background */
+/* The hero controls are dark glass, so they read on any photo */
 .hero-carousel .hero-ctrl {
   border-color: color-mix(in oklch, var(--color-on-photo) 35%, transparent);
   background: color-mix(in oklch, var(--color-scrim) 42%, transparent);
@@ -1040,12 +1013,6 @@ html:not(.js) .lang-switch {
   border-radius: 50%;
   background: var(--color-paper);
   box-shadow: var(--shadow-soft);
-  transition: transform 800ms var(--ease-spring);
-}
-
-/* The emblem gives a little nod each time the project changes */
-.hero-visual:has(.hero-slide:nth-child(even).is-active) .hero-emblem {
-  transform: rotate(-14deg) scale(1.06);
 }
 
 @media (max-width: 640px) {
@@ -1084,7 +1051,7 @@ html:not(.js) .lang-switch {
   max-width: 40ch;
 }
 
-/* The slide tag links to the project site (hero) or simply captions the collage (showcase) */
+/* The slide tag links to the project site (hero) or simply captions the photo */
 a.hero-slide-tag,
 span.hero-slide-tag {
   display: inline-flex;
@@ -1282,6 +1249,16 @@ html:not(.js) .hero-slide {
 
 .project-card:hover .project-card-image img {
   transform: scale(1.05);
+}
+
+/* Portrait photo in a landscape frame: keep the faces, not the pavement */
+.project-card-station .project-card-image img {
+  object-position: 50% 18%;
+}
+
+/* Keep the employee, on the left of the photo, in the frame */
+.project-card-precieuses .project-card-image img {
+  object-position: 30% 50%;
 }
 
 .project-card-overlay {
@@ -1501,7 +1478,7 @@ html:not(.js) .hero-slide {
 }
 
 /* --------------------------------------------------------------------------
-   Showcase: Les Précieuses in place (rose tint, text beside a collage carousel)
+   Showcase: Les Précieuses in place (terracotta tint, text beside a collage carousel)
    The carousel is the hero's component (.hero-visual > .hero-carousel): same
    split images, card deal, sticker captions, progress bar and glass controls.
    -------------------------------------------------------------------------- */
@@ -1569,15 +1546,15 @@ html:not(.js) .hero-slide {
 }
 
 .showcase-link:hover {
-  color: var(--color-rose-deep);
-  border-color: var(--color-rose-deep);
+  color: var(--color-terracotta-deep);
+  border-color: var(--color-terracotta-deep);
 }
 
 .showcase-link:hover svg {
   transform: translateX(4px);
 }
 
-/* Leaves room on the right for the offset rose block */
+/* Leaves room on the right for the offset terracotta block */
 .showcase-visual {
   width: calc(100% - var(--seal-shift));
   margin-inline: 0 auto;
@@ -1647,7 +1624,7 @@ html:not(.js) .hero-slide {
 }
 
 /* --------------------------------------------------------------------------
-   Impact chain (coral tint)
+   Impact chain (terracotta tint)
    -------------------------------------------------------------------------- */
 .impact {
   padding: var(--section-gap-s) 0;
@@ -1747,7 +1724,7 @@ html:not(.js) .hero-slide {
   gap: var(--space-md);
 }
 
-/* Light italic, so the section keeps a single bold title; the deeper rose
+/* Light italic, so the section keeps a single bold title; the deeper terracotta
    keeps 4.8:1 now that the line is no longer bold */
 .support-note {
   font-family: var(--font-display);
@@ -1755,7 +1732,7 @@ html:not(.js) .hero-slide {
   font-style: italic;
   font-weight: 400;
   line-height: 1.3;
-  color: var(--color-rose-deep);
+  color: var(--color-terracotta-deep);
 }
 
 .pill-tabs {
@@ -1930,18 +1907,8 @@ html:not(.js) .gallery-viewport {
               box-shadow var(--dur-short) var(--ease-out);
 }
 
-/* Dealt like the hero: collages outside the view wait tilted, then spring flat
-   as they slide in; the one leaving tips the other way. */
-.js .gallery-slide:not(.is-visible) figure {
-  transform: scale(0.84) rotate(-6deg);
-}
-
-.js .gallery-slide.is-visible ~ .gallery-slide:not(.is-visible) figure {
-  transform: scale(0.84) rotate(6deg);
-}
-
 .gallery-slide:hover figure {
-  transform: translateY(-6px) rotate(-1.5deg);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-photo);
 }
 
@@ -1953,7 +1920,7 @@ html:not(.js) .gallery-viewport {
   pointer-events: none;
 }
 
-/* The collages in view breathe slowly, like the hero's active one */
+/* The photos in view zoom slowly, like the hero's active one */
 .gallery-slide.is-visible img {
   animation: breathe calc(var(--interval) * 2) ease-in-out infinite alternate;
 }
@@ -1962,7 +1929,7 @@ html:not(.js) .gallery-viewport {
   animation-play-state: paused;
 }
 
-/* Sticker captions, like the hero's tags */
+/* Captions, like the hero's tags */
 .gallery-tag {
   position: absolute;
   left: var(--space-md);
@@ -1980,9 +1947,7 @@ html:not(.js) .gallery-viewport {
   color: var(--color-on-field);
   background: var(--color-field);
   box-shadow: 0 10px 20px -10px color-mix(in oklch, var(--color-ink) 70%, transparent);
-  transform: rotate(-4deg);
-  transform-origin: left center;
-  transition: opacity var(--dur-long) var(--ease-out), transform 650ms var(--ease-spring);
+  transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);
 }
 
 .gallery-tag-lp {
@@ -1997,16 +1962,11 @@ html:not(.js) .gallery-viewport {
 
 .js .gallery-slide:not(.is-visible) .gallery-tag {
   opacity: 0;
-  transform: translateY(12px) scale(0.5) rotate(10deg);
+  transform: translateY(12px);
 }
 
 .gallery-slide.is-visible .gallery-tag {
   transition-delay: 0.25s;
-}
-
-.gallery-slide:hover .gallery-tag {
-  transform: rotate(2deg) scale(1.06);
-  transition-delay: 0s;
 }
 
 .gallery-bar {
@@ -2250,7 +2210,7 @@ html:not(.js) .gallery-viewport {
 .partner-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-soft);
-  border-color: var(--color-rose-light);
+  border-color: var(--color-terracotta-light);
 }
 
 .partner-card:hover img {
@@ -2262,7 +2222,7 @@ html:not(.js) .gallery-viewport {
 }
 
 /* --------------------------------------------------------------------------
-   Contact (coral tint)
+   Contact (terracotta tint)
    -------------------------------------------------------------------------- */
 .contact {
   padding: var(--section-gap-s) 0;

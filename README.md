@@ -44,7 +44,7 @@ nousavonsdeselles/
 ├── wordpress-favicons/      ← kit de favicons prêt à téléverser dans WordPress
 ├── scripts/
 │   ├── convert-images.mjs   ← conversion des photos en WebP multi-tailles
-│   ├── build-split-images.mjs← collages « split » des trois galeries (public/images/splits/)
+│   ├── build-split-images.mjs← photos recadrées (4:5) du carrousel et de la galerie (public/images/splits/)
 │   └── generate-favicons.mjs← génération du logo et des favicons
 ├── src/logo-source.png      ← logo source (haute définition, fond transparent)
 └── package.json
@@ -74,7 +74,7 @@ Scripts disponibles :
 |---|---|
 | `npm run dev` | Prévisualise `public/` dans le navigateur |
 | `npm run convert-images` | Convertit les photos de `../img/` en WebP (3 tailles) vers `public/images/` |
-| `npm run split-images` | Recompose les collages des galeries (accueil : 8, Les Précieuses en entreprise : 4, galerie photo : 11) à partir des photos de `public/images/` vers `public/images/splits/`. Pour un seul jeu : `npm run split-images -- galerie` |
+| `npm run split-images` | Compose en 4:5 les diapositives du carrousel d’accueil (6, dont 2 compositions « split » Les Précieuses sur grille épurée) et de la galerie photo (5), sans décor, à partir des photos de `public/images/` vers `public/images/splits/`. Pour un seul jeu : `npm run split-images -- galerie` |
 | `npm run favicons` | Régénère logo + favicons depuis `src/logo-source.png` vers `public/` **et** `wordpress-favicons/` |
 | `npm run build` | Alias de `convert-images` |
 
